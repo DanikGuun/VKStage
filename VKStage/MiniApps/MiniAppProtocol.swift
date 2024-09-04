@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-protocol MiniAppProtocol where Self: UIView{
-    var needResize: Bool {get set} //Чтобы не менять размер на айпадах
-    func hide(animated: Bool)
+protocol MiniAppProtocol: Identifiable where Self: UIView{
+    var id: UUID { get set }
+    func setMinSize(animated: Bool)
     func setHalfSize(animated: Bool)
     func setFullSize(animated: Bool)
 }

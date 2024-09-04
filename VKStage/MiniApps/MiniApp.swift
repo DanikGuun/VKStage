@@ -8,31 +8,21 @@
 import Foundation
 import UIKit
 
-class MiniApp: UIView, MiniAppProtocol{
-    var needResize: Bool = false
+class MiniApp: UIView, MiniAppProtocol, Identifiable{
     
-    func hide(animated: Bool = true) {
-        guard needResize else { return }
-        
-        UIView.animate(withDuration: animated ? 0.5 : 0, animations: {
-            self.bounds.size = CGSize(width: self.window?.screen.bounds.width ?? 0, height: 0)
-        })
+    var id = UUID()
+    
+    /** Необходимо для расширения родительской вью.
+     Если родительскую вью изменять не нужно, оставьте nil
+     */
+    
+    func setMinSize(animated: Bool = true) {
     }
     
     func setHalfSize(animated: Bool = true) {
-        guard needResize else { return }
-        
-        UIView.animate(withDuration: animated ? 0.5 : 0, animations: {
-            self.bounds.size = CGSize(width: self.window?.screen.bounds.width ?? 0, height: (self.window?.screen.bounds.height ?? 0) / 2)
-        })
     }
     
     func setFullSize(animated: Bool = true) {
-        guard needResize else { return }
-        
-        UIView.animate(withDuration: animated ? 0.5 : 0, animations: {
-            self.bounds.size = CGSize(width: self.window?.screen.bounds.width ?? 0, height: self.window?.screen.bounds.height ?? 0)
-        })
     }
     
     

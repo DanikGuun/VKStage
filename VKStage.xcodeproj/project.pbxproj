@@ -12,11 +12,27 @@
 		567DB2BF2C88257B002D6020 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 567DB2BE2C88257B002D6020 /* Base */; };
 		567DB2C12C88257C002D6020 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 567DB2C02C88257C002D6020 /* Assets.xcassets */; };
 		567DB2C42C88257C002D6020 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 567DB2C32C88257C002D6020 /* Base */; };
-		567DB2CC2C8838CB002D6020 /* IphoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2CB2C8838CB002D6020 /* IphoneViewController.swift */; };
 		567DB2CE2C884847002D6020 /* MiniAppProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2CD2C884847002D6020 /* MiniAppProtocol.swift */; };
 		567DB2D32C884A5B002D6020 /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2D22C884A5B002D6020 /* TemperatureView.swift */; };
-		567DB2D52C884ABA002D6020 /* MiniApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2D42C884ABA002D6020 /* MiniApp.swift */; };
+		567DB2D82C884EF4002D6020 /* SmallScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2D72C884EF4002D6020 /* SmallScreenViewController.swift */; };
+		567DB2DC2C88508A002D6020 /* ApplicationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2DB2C88508A002D6020 /* ApplicationData.swift */; };
+		567DB2DE2C885C87002D6020 /* MiniAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2DD2C885C87002D6020 /* MiniAppCell.swift */; };
+		56B926EE2C88DE9D00125007 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 56B926ED2C88DE9D00125007 /* SnapKit */; };
+		56B926F12C88FAE000125007 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B926F02C88FAE000125007 /* LocationView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		56B926EB2C88DD6800125007 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		567DB2B42C88257B002D6020 /* VKStage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKStage.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,10 +42,12 @@
 		567DB2C02C88257C002D6020 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		567DB2C32C88257C002D6020 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		567DB2C52C88257C002D6020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		567DB2CB2C8838CB002D6020 /* IphoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IphoneViewController.swift; sourceTree = "<group>"; };
 		567DB2CD2C884847002D6020 /* MiniAppProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppProtocol.swift; sourceTree = "<group>"; };
 		567DB2D22C884A5B002D6020 /* TemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
-		567DB2D42C884ABA002D6020 /* MiniApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniApp.swift; sourceTree = "<group>"; };
+		567DB2D72C884EF4002D6020 /* SmallScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallScreenViewController.swift; sourceTree = "<group>"; };
+		567DB2DB2C88508A002D6020 /* ApplicationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationData.swift; sourceTree = "<group>"; };
+		567DB2DD2C885C87002D6020 /* MiniAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppCell.swift; sourceTree = "<group>"; };
+		56B926F02C88FAE000125007 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56B926EE2C88DE9D00125007 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +81,8 @@
 		567DB2B62C88257B002D6020 /* VKStage */ = {
 			isa = PBXGroup;
 			children = (
-				567DB2CF2C8849E7002D6020 /* View Controllers */,
+				567DB2DB2C88508A002D6020 /* ApplicationData.swift */,
+				567DB2D62C884EC6002D6020 /* ViewControllers */,
 				567DB2B72C88257B002D6020 /* AppDelegate.swift */,
 				567DB2B92C88257B002D6020 /* SceneDelegate.swift */,
 				567DB2D02C884A08002D6020 /* MiniApps */,
@@ -74,20 +94,13 @@
 			path = VKStage;
 			sourceTree = "<group>";
 		};
-		567DB2CF2C8849E7002D6020 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				567DB2CB2C8838CB002D6020 /* IphoneViewController.swift */,
-			);
-			path = "View Controllers";
-			sourceTree = "<group>";
-		};
 		567DB2D02C884A08002D6020 /* MiniApps */ = {
 			isa = PBXGroup;
 			children = (
+				56B926EF2C88FAC600125007 /* Location */,
 				567DB2D12C884A15002D6020 /* Temperature */,
+				567DB2DD2C885C87002D6020 /* MiniAppCell.swift */,
 				567DB2CD2C884847002D6020 /* MiniAppProtocol.swift */,
-				567DB2D42C884ABA002D6020 /* MiniApp.swift */,
 			);
 			path = MiniApps;
 			sourceTree = "<group>";
@@ -100,6 +113,22 @@
 			path = Temperature;
 			sourceTree = "<group>";
 		};
+		567DB2D62C884EC6002D6020 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				567DB2D72C884EF4002D6020 /* SmallScreenViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		56B926EF2C88FAC600125007 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				56B926F02C88FAE000125007 /* LocationView.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -110,12 +139,16 @@
 				567DB2B02C88257B002D6020 /* Sources */,
 				567DB2B12C88257B002D6020 /* Frameworks */,
 				567DB2B22C88257B002D6020 /* Resources */,
+				56B926EB2C88DD6800125007 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = VKStage;
+			packageProductDependencies = (
+				56B926ED2C88DE9D00125007 /* SnapKit */,
+			);
 			productName = VKStage;
 			productReference = 567DB2B42C88257B002D6020 /* VKStage.app */;
 			productType = "com.apple.product-type.application";
@@ -144,6 +177,9 @@
 				Base,
 			);
 			mainGroup = 567DB2AB2C88257B002D6020;
+			packageReferences = (
+				56B926EC2C88DE9D00125007 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 567DB2B52C88257B002D6020 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -172,11 +208,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				567DB2D32C884A5B002D6020 /* TemperatureView.swift in Sources */,
+				56B926F12C88FAE000125007 /* LocationView.swift in Sources */,
 				567DB2CE2C884847002D6020 /* MiniAppProtocol.swift in Sources */,
+				567DB2DE2C885C87002D6020 /* MiniAppCell.swift in Sources */,
+				567DB2D82C884EF4002D6020 /* SmallScreenViewController.swift in Sources */,
 				567DB2B82C88257B002D6020 /* AppDelegate.swift in Sources */,
 				567DB2BA2C88257B002D6020 /* SceneDelegate.swift in Sources */,
-				567DB2D52C884ABA002D6020 /* MiniApp.swift in Sources */,
-				567DB2CC2C8838CB002D6020 /* IphoneViewController.swift in Sources */,
+				567DB2DC2C88508A002D6020 /* ApplicationData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +437,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		56B926EC2C88DE9D00125007 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		56B926ED2C88DE9D00125007 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56B926EC2C88DE9D00125007 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 567DB2AC2C88257B002D6020 /* Project object */;
 }
