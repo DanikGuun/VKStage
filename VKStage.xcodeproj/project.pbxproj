@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		567DB2B82C88257B002D6020 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2B72C88257B002D6020 /* AppDelegate.swift */; };
 		567DB2BA2C88257B002D6020 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2B92C88257B002D6020 /* SceneDelegate.swift */; };
-		567DB2BC2C88257B002D6020 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2BB2C88257B002D6020 /* ViewController.swift */; };
 		567DB2BF2C88257B002D6020 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 567DB2BE2C88257B002D6020 /* Base */; };
 		567DB2C12C88257C002D6020 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 567DB2C02C88257C002D6020 /* Assets.xcassets */; };
 		567DB2C42C88257C002D6020 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 567DB2C32C88257C002D6020 /* Base */; };
+		567DB2CC2C8838CB002D6020 /* IphoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2CB2C8838CB002D6020 /* IphoneViewController.swift */; };
+		567DB2CE2C884847002D6020 /* MiniAppProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2CD2C884847002D6020 /* MiniAppProtocol.swift */; };
+		567DB2D32C884A5B002D6020 /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2D22C884A5B002D6020 /* TemperatureView.swift */; };
+		567DB2D52C884ABA002D6020 /* MiniApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2D42C884ABA002D6020 /* MiniApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		567DB2B42C88257B002D6020 /* VKStage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKStage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		567DB2B72C88257B002D6020 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		567DB2B92C88257B002D6020 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		567DB2BB2C88257B002D6020 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		567DB2BE2C88257B002D6020 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		567DB2C02C88257C002D6020 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		567DB2C32C88257C002D6020 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		567DB2C52C88257C002D6020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		567DB2CB2C8838CB002D6020 /* IphoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IphoneViewController.swift; sourceTree = "<group>"; };
+		567DB2CD2C884847002D6020 /* MiniAppProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppProtocol.swift; sourceTree = "<group>"; };
+		567DB2D22C884A5B002D6020 /* TemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
+		567DB2D42C884ABA002D6020 /* MiniApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,42 @@
 		567DB2B62C88257B002D6020 /* VKStage */ = {
 			isa = PBXGroup;
 			children = (
+				567DB2CF2C8849E7002D6020 /* View Controllers */,
 				567DB2B72C88257B002D6020 /* AppDelegate.swift */,
 				567DB2B92C88257B002D6020 /* SceneDelegate.swift */,
-				567DB2BB2C88257B002D6020 /* ViewController.swift */,
+				567DB2D02C884A08002D6020 /* MiniApps */,
 				567DB2BD2C88257B002D6020 /* Main.storyboard */,
 				567DB2C02C88257C002D6020 /* Assets.xcassets */,
 				567DB2C22C88257C002D6020 /* LaunchScreen.storyboard */,
 				567DB2C52C88257C002D6020 /* Info.plist */,
 			);
 			path = VKStage;
+			sourceTree = "<group>";
+		};
+		567DB2CF2C8849E7002D6020 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				567DB2CB2C8838CB002D6020 /* IphoneViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		567DB2D02C884A08002D6020 /* MiniApps */ = {
+			isa = PBXGroup;
+			children = (
+				567DB2D12C884A15002D6020 /* Temperature */,
+				567DB2CD2C884847002D6020 /* MiniAppProtocol.swift */,
+				567DB2D42C884ABA002D6020 /* MiniApp.swift */,
+			);
+			path = MiniApps;
+			sourceTree = "<group>";
+		};
+		567DB2D12C884A15002D6020 /* Temperature */ = {
+			isa = PBXGroup;
+			children = (
+				567DB2D22C884A5B002D6020 /* TemperatureView.swift */,
+			);
+			path = Temperature;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +171,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				567DB2BC2C88257B002D6020 /* ViewController.swift in Sources */,
+				567DB2D32C884A5B002D6020 /* TemperatureView.swift in Sources */,
+				567DB2CE2C884847002D6020 /* MiniAppProtocol.swift in Sources */,
 				567DB2B82C88257B002D6020 /* AppDelegate.swift in Sources */,
 				567DB2BA2C88257B002D6020 /* SceneDelegate.swift in Sources */,
+				567DB2D52C884ABA002D6020 /* MiniApp.swift in Sources */,
+				567DB2CC2C8838CB002D6020 /* IphoneViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
