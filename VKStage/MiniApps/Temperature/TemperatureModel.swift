@@ -6,11 +6,11 @@
 //
 
 import Foundation
-import MapKit
+import CoreLocation
 
 final class TemperatureModel{
     static func getTemperature() async -> Double?{
-        guard let coordinates = getCoordinate() else { return nil }
+        guard let coordinates = getCoordinates() else { return nil }
         guard let url = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=\(coordinates.latitude)&longitude=\(coordinates.longitude)&minutely_15=temperature_2m&past_days=1&forecast_days=1") else { return nil }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -24,7 +24,7 @@ final class TemperatureModel{
         return nil
     }
     
-    private static func getCoordinate() -> CLLocationCoordinate2D?{
+    static func getCoordinates() -> CLLocationCoordinate2D?{
         let manager = CLLocationManager()
         manager.requestWhenInUseAuthorization()
         if manager.authorizationStatus == .authorizedWhenInUse || manager.authorizationStatus == .authorizedAlways{

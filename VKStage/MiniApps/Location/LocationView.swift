@@ -16,11 +16,28 @@ class LocationView: InfoMiniAppView{
 
         iconView.image = UIImage(systemName: "building.2.fill")
         
-        infoLabel.text = "Ваш город:"
-        dataLabel.text = LocationModel.getCurrentCity()
+        infoLabel.text = "Ваш примерный адрес:"
+        infoLabel.font = UIFont.systemFont(ofSize: 36)
+        dataLabel.font = UIFont.systemFont(ofSize: 24)
+        
         updateButtonHandler = {
-            self.dataLabel.text = LocationModel.getCurrentCity()
+            Task(priority: .userInitiated){
+                if let city = await LocationModel.getCurrentCity(){
+                    await MainActor.run{
+                        self.dataLabel.text = "\(city)"
+                    }
+                }
+                else {
+                    let alert = UIAlertController(title: "Произошла ошибка получения адреса(", message: "Скорее всего вы не дали разрешение на использование местоположения, либо у вас нет доступа к интернету", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+                    await MainActor.run{
+                        self.viewController?.present(alert, animated: true)
+                    }
+                }
+            }
         }
+        
+        if let update = updateButtonHandler { update() }
     }
     
     override func draw(_ rect: CGRect) {

@@ -37,6 +37,7 @@ class InfoMiniAppView: MiniApp{
         self.addSubview(infoLabel)
         infoLabel.font = UIFont.systemFont(ofSize: 36)
         infoLabel.textColor = .systemBackground
+        infoLabel.numberOfLines = 2
         infoLabel.snp.makeConstraints { maker in
             maker.top.equalToSuperview().inset(30)
             maker.centerX.equalToSuperview()
@@ -46,6 +47,7 @@ class InfoMiniAppView: MiniApp{
         self.addSubview(dataLabel)
         dataLabel.font = UIFont.systemFont(ofSize: 76)
         dataLabel.textColor = .systemBackground
+        dataLabel.numberOfLines = 2
         dataLabel.snp.makeConstraints { maker in
             maker.top.equalTo(infoLabel.snp.bottom).offset(50)
             maker.centerX.equalTo(infoLabel)
@@ -57,8 +59,12 @@ class InfoMiniAppView: MiniApp{
         let image = UIImage(systemName: "arrow.triangle.2.circlepath")?.withConfiguration(symbconf)
         updateButton.setImage(image, for: .normal)
         updateButton.tintColor = .systemBackground
-        updateButton.addAction(UIAction(handler: {_ in
-            if let updateButtonHandler = self.updateButtonHandler { updateButtonHandler() }
+        updateButton.addAction(UIAction(handler: {[unowned self] _ in
+            if let updateButtonHandler = self.updateButtonHandler { updateButtonHandler()
+                UIView.animate(withDuration: 0.6, delay: 0, options: [.curveEaseInOut], animations: {
+                    updateButton.transform = updateButton.transform.rotated(by: .pi)
+                })
+            }
         }), for: .touchUpInside)
         updateButton.snp.makeConstraints { maker in
             maker.trailing.bottom.equalToSuperview()
