@@ -62,7 +62,7 @@ class InfoMiniAppView: MiniApp{
         updateButton.addAction(UIAction(handler: {[unowned self] _ in
             if let updateButtonHandler = self.updateButtonHandler { updateButtonHandler()
                 UIView.animate(withDuration: 0.6, delay: 0, options: [.curveEaseInOut], animations: {
-                    updateButton.transform = updateButton.transform.rotated(by: .pi)
+                    self.updateButton.transform = self.updateButton.transform.rotated(by: .pi)
                 })
             }
         }), for: .touchUpInside)

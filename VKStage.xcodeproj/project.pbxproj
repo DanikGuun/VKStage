@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56524A8B2C8A31E500DA1B98 /* TicTacView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56524A8A2C8A31E500DA1B98 /* TicTacView.swift */; };
 		567DB2B82C88257B002D6020 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2B72C88257B002D6020 /* AppDelegate.swift */; };
 		567DB2BA2C88257B002D6020 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2B92C88257B002D6020 /* SceneDelegate.swift */; };
 		567DB2BF2C88257B002D6020 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 567DB2BE2C88257B002D6020 /* Base */; };
@@ -39,6 +40,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		56524A8A2C8A31E500DA1B98 /* TicTacView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacView.swift; sourceTree = "<group>"; };
 		567DB2B42C88257B002D6020 /* VKStage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKStage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		567DB2B72C88257B002D6020 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		567DB2B92C88257B002D6020 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56524A892C8A31C200DA1B98 /* TicTacToes */ = {
+			isa = PBXGroup;
+			children = (
+				56524A8A2C8A31E500DA1B98 /* TicTacView.swift */,
+			);
+			path = TicTacToes;
+			sourceTree = "<group>";
+		};
 		567DB2AB2C88257B002D6020 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +115,7 @@
 		567DB2D02C884A08002D6020 /* MiniApps */ = {
 			isa = PBXGroup;
 			children = (
+				56524A892C8A31C200DA1B98 /* TicTacToes */,
 				56B926EF2C88FAC600125007 /* Location */,
 				567DB2D12C884A15002D6020 /* Temperature */,
 				567DB2DD2C885C87002D6020 /* MiniAppCell.swift */,
@@ -222,6 +233,7 @@
 				56B926F72C897D7700125007 /* MiniApp.swift in Sources */,
 				567DB2D32C884A5B002D6020 /* TemperatureView.swift in Sources */,
 				56B926F52C897C6500125007 /* InfoMiniAppView.swift in Sources */,
+				56524A8B2C8A31E500DA1B98 /* TicTacView.swift in Sources */,
 				56B926F12C88FAE000125007 /* LocationView.swift in Sources */,
 				56B926F92C898DA500125007 /* LocationModel.swift in Sources */,
 				567DB2CE2C884847002D6020 /* MiniAppProtocol.swift in Sources */,

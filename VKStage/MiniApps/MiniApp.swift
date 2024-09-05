@@ -16,6 +16,7 @@ class MiniApp: UIView, MiniAppProtocol{
     
     convenience init(){
         self.init(frame: .zero)
+        setup()
     }
     
     func setup(){
