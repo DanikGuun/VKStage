@@ -6,21 +6,20 @@
 //
 
 import UIKit
+import SnapKit
 import CoreGraphics
 
-final class TemperatureView: UIView, MiniAppProtocol {
-    var id = UUID()
-    
-    func setMinSize(animated: Bool) {
+final class TemperatureView: InfoMiniAppView {
+
+    override func setup() {
+        super.setup()
+        iconView.image = UIImage(systemName: "thermometer.variable.and.figure")
         
-    }
-    
-    func setHalfSize(animated: Bool) {
-        
-    }
-    
-    func setFullSize(animated: Bool) {
-        
+        infoLabel.text = "Текущая температура"
+        dataLabel.text = "\(TemperatureModel.getTemperature())°"
+        updateButtonHandler = {
+            self.dataLabel.text = "\(TemperatureModel.getTemperature())°"
+        }
     }
     
     override func draw(_ rect: CGRect) {

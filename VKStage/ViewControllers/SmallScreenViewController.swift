@@ -25,6 +25,10 @@ class SmallScreenViewController: UIViewController, UICollectionViewDelegate {
     private func changeSizeButtonPressed(_ sender: UIButton) {
         let targetMultiplyer: CGFloat = sender.isSelected ? 1/2 : 1/8
         collectionView.setCollectionViewLayout(getLayout(multiplyer: targetMultiplyer), animated: true)
+        AppData.apps.forEach {
+            if sender.isSelected { $0.setHalfSize(animated: true) }
+            else { $0.setMinSize(animated: true) }
+        }
     }
     
     private func setupResizeButton(){

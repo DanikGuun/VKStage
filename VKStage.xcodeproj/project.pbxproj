@@ -19,6 +19,9 @@
 		567DB2DE2C885C87002D6020 /* MiniAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2DD2C885C87002D6020 /* MiniAppCell.swift */; };
 		56B926EE2C88DE9D00125007 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 56B926ED2C88DE9D00125007 /* SnapKit */; };
 		56B926F12C88FAE000125007 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B926F02C88FAE000125007 /* LocationView.swift */; };
+		56B926F32C89784400125007 /* TemperatureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B926F22C89784400125007 /* TemperatureModel.swift */; };
+		56B926F52C897C6500125007 /* InfoMiniAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B926F42C897C6500125007 /* InfoMiniAppView.swift */; };
+		56B926F72C897D7700125007 /* MiniApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B926F62C897D7700125007 /* MiniApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,6 +51,9 @@
 		567DB2DB2C88508A002D6020 /* ApplicationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationData.swift; sourceTree = "<group>"; };
 		567DB2DD2C885C87002D6020 /* MiniAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppCell.swift; sourceTree = "<group>"; };
 		56B926F02C88FAE000125007 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		56B926F22C89784400125007 /* TemperatureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureModel.swift; sourceTree = "<group>"; };
+		56B926F42C897C6500125007 /* InfoMiniAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMiniAppView.swift; sourceTree = "<group>"; };
+		56B926F62C897D7700125007 /* MiniApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +106,8 @@
 				56B926EF2C88FAC600125007 /* Location */,
 				567DB2D12C884A15002D6020 /* Temperature */,
 				567DB2DD2C885C87002D6020 /* MiniAppCell.swift */,
+				56B926F42C897C6500125007 /* InfoMiniAppView.swift */,
+				56B926F62C897D7700125007 /* MiniApp.swift */,
 				567DB2CD2C884847002D6020 /* MiniAppProtocol.swift */,
 			);
 			path = MiniApps;
@@ -109,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				567DB2D22C884A5B002D6020 /* TemperatureView.swift */,
+				56B926F22C89784400125007 /* TemperatureModel.swift */,
 			);
 			path = Temperature;
 			sourceTree = "<group>";
@@ -207,11 +216,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56B926F72C897D7700125007 /* MiniApp.swift in Sources */,
 				567DB2D32C884A5B002D6020 /* TemperatureView.swift in Sources */,
+				56B926F52C897C6500125007 /* InfoMiniAppView.swift in Sources */,
 				56B926F12C88FAE000125007 /* LocationView.swift in Sources */,
 				567DB2CE2C884847002D6020 /* MiniAppProtocol.swift in Sources */,
 				567DB2DE2C885C87002D6020 /* MiniAppCell.swift in Sources */,
 				567DB2D82C884EF4002D6020 /* SmallScreenViewController.swift in Sources */,
+				56B926F32C89784400125007 /* TemperatureModel.swift in Sources */,
 				567DB2B82C88257B002D6020 /* AppDelegate.swift in Sources */,
 				567DB2BA2C88257B002D6020 /* SceneDelegate.swift in Sources */,
 				567DB2DC2C88508A002D6020 /* ApplicationData.swift in Sources */,
