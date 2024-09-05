@@ -13,13 +13,27 @@ final class TemperatureView: InfoMiniAppView {
 
     override func setup() {
         super.setup()
-        iconView.image = UIImage(systemName: "thermometer.variable.and.figure")
         
+        iconView.image = UIImage(systemName: "thermometer.variable.and.figure")
         infoLabel.text = "Текущая температура"
-        dataLabel.text = "\(TemperatureModel.getTemperature())°"
         updateButtonHandler = {
-            self.dataLabel.text = "\(TemperatureModel.getTemperature())°"
+            Task(priority: .userInitiated){
+                if let temperature = await TemperatureModel.getTemperature(){
+                    await MainActor.run{
+                        self.dataLabel.text = "\(temperature)°"
+                    }
+                }
+                else {
+                    let alert = UIAlertController(title: "Произошла ошибка получения температуры(", message: "Скорее всего вы не дали разрешение на использование местоположения, либо у вас нет доступа к интернету", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+                    await MainActor.run{
+                        self.viewController?.present(alert, animated: true)
+                    }
+                }
+            }
         }
+        
+        if let update = updateButtonHandler {update()} //загружаем температуру первый рвз
     }
     
     override func draw(_ rect: CGRect) {

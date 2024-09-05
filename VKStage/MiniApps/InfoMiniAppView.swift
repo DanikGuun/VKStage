@@ -16,6 +16,15 @@ class InfoMiniAppView: MiniApp{
     internal var dataLabel = UILabel()
     internal var updateButton = UIButton()
     internal var updateButtonHandler: (() -> ())?
+    
+    internal weak var viewController: UIViewController? {
+        var responder: UIResponder? = self
+        while responder?.next != nil{
+            if let controller = responder as? UIViewController { return controller }
+            responder = responder?.next
+        }
+        return nil
+    }
 
     convenience init(){
         self.init(frame: .zero)
