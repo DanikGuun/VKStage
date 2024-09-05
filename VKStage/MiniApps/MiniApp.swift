@@ -34,10 +34,15 @@ class MiniApp: UIView, MiniAppProtocol{
     func setMinSize(animated: Bool = true) {
         UIView.animate(withDuration: animated ? 0.5 : 0, animations: {
             self.setNeedsLayout()
-            self.hideElements()
             self.iconView.snp.remakeConstraints { maker in
                 maker.center.equalToSuperview()
             }
+            self.layoutIfNeeded()
+        })
+        //Здесь разделил, чтобы
+        UIView.animate(withDuration: animated ? 0.3: 0, animations: {
+            self.setNeedsLayout()
+            self.hideElements()
             self.layoutIfNeeded()
         })
     }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		56524A8B2C8A31E500DA1B98 /* TicTacView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56524A8A2C8A31E500DA1B98 /* TicTacView.swift */; };
+		56524A8D2C8A386C00DA1B98 /* TicTacFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56524A8C2C8A386C00DA1B98 /* TicTacFieldView.swift */; };
 		567DB2B82C88257B002D6020 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2B72C88257B002D6020 /* AppDelegate.swift */; };
 		567DB2BA2C88257B002D6020 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2B92C88257B002D6020 /* SceneDelegate.swift */; };
 		567DB2BF2C88257B002D6020 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 567DB2BE2C88257B002D6020 /* Base */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		56524A8A2C8A31E500DA1B98 /* TicTacView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacView.swift; sourceTree = "<group>"; };
+		56524A8C2C8A386C00DA1B98 /* TicTacFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacFieldView.swift; sourceTree = "<group>"; };
 		567DB2B42C88257B002D6020 /* VKStage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKStage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		567DB2B72C88257B002D6020 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		567DB2B92C88257B002D6020 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				56524A8A2C8A31E500DA1B98 /* TicTacView.swift */,
+				56524A8C2C8A386C00DA1B98 /* TicTacFieldView.swift */,
 			);
 			path = TicTacToes;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				567DB2CE2C884847002D6020 /* MiniAppProtocol.swift in Sources */,
 				567DB2DE2C885C87002D6020 /* MiniAppCell.swift in Sources */,
 				567DB2D82C884EF4002D6020 /* SmallScreenViewController.swift in Sources */,
+				56524A8D2C8A386C00DA1B98 /* TicTacFieldView.swift in Sources */,
 				56B926F32C89784400125007 /* TemperatureModel.swift in Sources */,
 				567DB2B82C88257B002D6020 /* AppDelegate.swift in Sources */,
 				567DB2BA2C88257B002D6020 /* SceneDelegate.swift in Sources */,
