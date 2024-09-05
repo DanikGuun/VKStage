@@ -22,6 +22,7 @@
 		56B926F32C89784400125007 /* TemperatureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B926F22C89784400125007 /* TemperatureModel.swift */; };
 		56B926F52C897C6500125007 /* InfoMiniAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B926F42C897C6500125007 /* InfoMiniAppView.swift */; };
 		56B926F72C897D7700125007 /* MiniApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B926F62C897D7700125007 /* MiniApp.swift */; };
+		56B926F92C898DA500125007 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B926F82C898DA500125007 /* LocationModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,6 +55,7 @@
 		56B926F22C89784400125007 /* TemperatureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureModel.swift; sourceTree = "<group>"; };
 		56B926F42C897C6500125007 /* InfoMiniAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMiniAppView.swift; sourceTree = "<group>"; };
 		56B926F62C897D7700125007 /* MiniApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniApp.swift; sourceTree = "<group>"; };
+		56B926F82C898DA500125007 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				56B926F02C88FAE000125007 /* LocationView.swift */,
+				56B926F82C898DA500125007 /* LocationModel.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				567DB2D32C884A5B002D6020 /* TemperatureView.swift in Sources */,
 				56B926F52C897C6500125007 /* InfoMiniAppView.swift in Sources */,
 				56B926F12C88FAE000125007 /* LocationView.swift in Sources */,
+				56B926F92C898DA500125007 /* LocationModel.swift in Sources */,
 				567DB2CE2C884847002D6020 /* MiniAppProtocol.swift in Sources */,
 				567DB2DE2C885C87002D6020 /* MiniAppCell.swift in Sources */,
 				567DB2D82C884EF4002D6020 /* SmallScreenViewController.swift in Sources */,
