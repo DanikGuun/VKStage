@@ -19,6 +19,7 @@ class TicTacFieldView: UIView{
     //MARK: - Initialize
     convenience init(){
         self.init(frame: .zero)
+        //добавляем и отображаем вьюхи
         for _ in 0..<9 {ticTacElements.append(TicTacElementView())}
         ticTacElements.forEach { self.addSubview($0) }
         drawTicTacs()
@@ -33,6 +34,7 @@ class TicTacFieldView: UIView{
             
             cell.snp.remakeConstraints { maker in
                 maker.size.equalToSuperview().dividedBy(3).inset(lineWidth/2)
+                //располагаем крестики/нолики, начиная с левого верхнего
                 switch x {
                 case 0: maker.leading.equalToSuperview().inset(lineWidth/2)
                 case 1: maker.centerX.equalToSuperview()

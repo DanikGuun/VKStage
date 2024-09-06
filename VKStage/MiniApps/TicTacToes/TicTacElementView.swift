@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 import CoreGraphics
 
-class TicTacElementView: UIView{
+class TicTacElementView: UIControl{
     
+    convenience init(){
+        self.init(frame: .zero)
+    }
 }
