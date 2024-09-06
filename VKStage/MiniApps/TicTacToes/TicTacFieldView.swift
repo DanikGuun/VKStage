@@ -24,11 +24,10 @@ class TicTacFieldView: UIView{
         ticTacElements.forEach { self.addSubview($0) }
         drawTicTacs()
     }
-
     
     private func drawTicTacs(){
         for (i, cell) in ticTacElements.enumerated(){
-            cell.backgroundColor = .red
+            cell.backgroundColor = .clear
             let x = CGFloat(i / 3)
             let y = CGFloat(i % 3)
             
@@ -50,7 +49,6 @@ class TicTacFieldView: UIView{
             }
         }
     }
-    
     
     //MARK: - Drawing
     
@@ -119,5 +117,10 @@ class TicTacFieldView: UIView{
         drawCircle(at: CGPoint(x: rect.midX + minEdge/2 - lineWidth/2, y: rect.midY + minEdge/3/2), for: downPath)
         downPath.fill()
         //
+    }
+    //чтобы клетки обновлялись вместе с полем
+    override func setNeedsDisplay() {
+        super.setNeedsDisplay()
+        ticTacElements.forEach { $0.setNeedsDisplay() }
     }
 }

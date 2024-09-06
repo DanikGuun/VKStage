@@ -20,7 +20,7 @@ final class LocationModel{
             request.setValue("application/json", forHTTPHeaderField: "Accept")
             request.setValue("Token d104c32b43e7a00fd24634939ba636c765459399", forHTTPHeaderField: "Authorization")
 
-            let jsonCooredinates: [String: Double] = ["lat": coordinates.latitude, "lon": coordinates.longitude, "radius_meters": 1000000]
+            let jsonCooredinates: [String: Double] = ["lat": coordinates.latitude, "lon": coordinates.longitude, "radius_meters": 1000]
             request.httpBody = try JSONEncoder().encode(jsonCooredinates)
             
             let (data, _) = try await URLSession.shared.data(for: request)
