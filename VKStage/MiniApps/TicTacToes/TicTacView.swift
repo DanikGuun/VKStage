@@ -11,6 +11,7 @@ import CoreGraphics
 class TicTacView: MiniApp {
 
     var ticTacField = TicTacFieldView()
+
     
     override func setup() {
         self.addSubview(ticTacField)

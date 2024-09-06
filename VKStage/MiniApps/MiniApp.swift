@@ -39,7 +39,7 @@ class MiniApp: UIView, MiniAppProtocol{
             }
             self.layoutIfNeeded()
         })
-        //Здесь разделил, чтобы
+        //Здесь разделил, чтобы приложение скрывало вьюшки раньше, чем иконка придет в центр
         UIView.animate(withDuration: animated ? 0.3: 0, animations: {
             self.setNeedsLayout()
             self.hideElements()

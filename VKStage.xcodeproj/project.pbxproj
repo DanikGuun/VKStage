@@ -25,6 +25,7 @@
 		56B926F52C897C6500125007 /* InfoMiniAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B926F42C897C6500125007 /* InfoMiniAppView.swift */; };
 		56B926F72C897D7700125007 /* MiniApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B926F62C897D7700125007 /* MiniApp.swift */; };
 		56B926F92C898DA500125007 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B926F82C898DA500125007 /* LocationModel.swift */; };
+		56CBECB92C8B14150050A2CC /* TicTacElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CBECB82C8B14150050A2CC /* TicTacElementView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -60,6 +61,7 @@
 		56B926F42C897C6500125007 /* InfoMiniAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMiniAppView.swift; sourceTree = "<group>"; };
 		56B926F62C897D7700125007 /* MiniApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniApp.swift; sourceTree = "<group>"; };
 		56B926F82C898DA500125007 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		56CBECB82C8B14150050A2CC /* TicTacElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacElementView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				56524A8A2C8A31E500DA1B98 /* TicTacView.swift */,
 				56524A8C2C8A386C00DA1B98 /* TicTacFieldView.swift */,
+				56CBECB82C8B14150050A2CC /* TicTacElementView.swift */,
 			);
 			path = TicTacToes;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				567DB2CE2C884847002D6020 /* MiniAppProtocol.swift in Sources */,
 				567DB2DE2C885C87002D6020 /* MiniAppCell.swift in Sources */,
 				567DB2D82C884EF4002D6020 /* SmallScreenViewController.swift in Sources */,
+				56CBECB92C8B14150050A2CC /* TicTacElementView.swift in Sources */,
 				56524A8D2C8A386C00DA1B98 /* TicTacFieldView.swift in Sources */,
 				56B926F32C89784400125007 /* TemperatureModel.swift in Sources */,
 				567DB2B82C88257B002D6020 /* AppDelegate.swift in Sources */,
