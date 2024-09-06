@@ -14,5 +14,6 @@ protocol TicTacElementDelegate{
      - type: текущий тип ячейки
      - Returns: тип, который примет ячейка после нажатия
      */
-    func performStep(_ type: TicTacCellType) -> TicTacCellType
+    func ticTacElement(prepareToStepWith type: TicTacCellType, withPosition position: Int) -> TicTacCellType
+    
 }

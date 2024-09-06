@@ -13,16 +13,17 @@ class TicTacElementView: UIControl{
     
     var delegate: TicTacElementDelegate?
     var cellType: TicTacCellType = .none { didSet { setNeedsDisplay() } }
-    var margin: CGFloat = 10  { didSet { setNeedsDisplay() } } //если надо сделать с отступом
+    var margin: CGFloat = 0  { didSet { setNeedsDisplay() } } //если надо сделать с отступом
     var lineWidth: CGFloat = 10 { didSet { setNeedsDisplay() } }
-    var ticColor: UIColor = .red { didSet { setNeedsDisplay() } }
-    var tacColor: UIColor = .green { didSet { setNeedsDisplay() } }
+    var ticColor: UIColor = .tic { didSet { setNeedsDisplay() } }
+    var tacColor: UIColor = .tac { didSet { setNeedsDisplay() } }
+    var position: Int = 0
     
     convenience init(){
         self.init(frame: .zero)
         self.addAction(UIAction(handler: { [unowned self] _ in
             if let delegate = delegate{
-                cellType = delegate.performStep(cellType)
+                cellType = delegate.ticTacElement(prepareToStepWith: cellType, withPosition: position)
             }
         }), for: .touchUpInside)
     }
@@ -58,11 +59,11 @@ class TicTacElementView: UIControl{
             ticPath2.lineWidth = lineWidth
             
             ticPath2.move(to: CGPoint(x: 0 + margin + lineWidth/2, y: height - margin - lineWidth/2))
-            ticPath2.addLine(to: CGPoint(x: width - margin - lineWidth, y: 0 + margin + lineWidth/2))
+            ticPath2.addLine(to: CGPoint(x: width - margin - lineWidth/2, y: 0 + margin + lineWidth/2))
             ticPath2.stroke()
             
             drawCircle(at: CGPoint(x: 0 + margin + lineWidth/2, y: height - margin - lineWidth/2), for: ticPath2)
-            drawCircle(at: CGPoint(x: width - margin - lineWidth, y: 0 + margin + lineWidth/2), for: ticPath2)
+            drawCircle(at: CGPoint(x: width - margin - lineWidth/2, y: 0 + margin + lineWidth/2), for: ticPath2)
             ticPath2.fill()
         }
         

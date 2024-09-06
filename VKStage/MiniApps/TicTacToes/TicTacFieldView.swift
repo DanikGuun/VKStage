@@ -9,29 +9,37 @@ import Foundation
 import UIKit
 import CoreGraphics
 
-class TicTacFieldView: UIView, TicTacElementDelegate{
+final class TicTacFieldView: UIView, TicTacElementDelegate{
     
     var fieldColor: UIColor = .systemBackground { didSet{ self.setNeedsDisplay() } }
     var lineWidth: CGFloat = 7 { didSet{ self.setNeedsDisplay() } }
-    private var currentStep: TicTacCellType = .tic
+    var delegate: TicTacFieldDelegate?
     
+    private var currentStep: TicTacCellType = .tic
     private var ticTacElements: [TicTacElementView] = [] //клеточки
+    private var ticPositions = Set<Int>() //чтобы держать позиции и смотреть по ним выигрыш
+    private var tacPositions = Set<Int>()
     
     //MARK: - Initialize
     convenience init(){
         self.init(frame: .zero)
         //добавляем и отображаем вьюхи
-        for _ in 0..<9 {ticTacElements.append(TicTacElementView())}
-        ticTacElements.forEach { self.addSubview($0) }
-        ticTacElements.forEach { $0.delegate = self }
+        for i in 0 ..< 9 {
+            let cell = TicTacElementView()
+            self.addSubview(cell)
+            ticTacElements.append(cell)
+            cell.delegate = self
+            cell.margin = 10
+            cell.position = i
+        }
         drawTicTacs()
     }
     
     private func drawTicTacs(){
         for (i, cell) in ticTacElements.enumerated(){
             cell.backgroundColor = .clear
-            let x = CGFloat(i / 3)
-            let y = CGFloat(i % 3)
+            let x = CGFloat(i % 3)
+            let y = CGFloat(i / 3)
             
             cell.snp.remakeConstraints { maker in
                 maker.size.equalToSuperview().dividedBy(3).inset(lineWidth/2)
@@ -51,13 +59,47 @@ class TicTacFieldView: UIView, TicTacElementDelegate{
             }
         }
     }
+    //MARK: - Tic Tac Logic
+    private func checkWin(){
+        func checkCombination(_ combination: Set<Int>, in positions: Set<Int>) -> Bool{
+            for position in combination{
+                if positions.contains(position) == false { return false }
+            }
+            return true
+        }
+        
+        let winCombinations: Set<Set<Int>>  = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
+        for combination in winCombinations {
+            if checkCombination(combination, in: ticPositions) { reset(winType: .tic); return }
+            if checkCombination(combination, in: tacPositions) { reset(winType: .tac); return }
+        }
+        //если поле заполнено
+        if ticPositions.count + tacPositions.count == 9 { reset(winType: .none) }
+    }
+    
+    private func reset(winType: TicTacCellType){
+        delegate?.ticTacField(winWith: winType, compelition: { [unowned self] in
+            ticPositions.removeAll()
+            tacPositions.removeAll()
+            currentStep = .tic
+            ticTacElements.forEach { $0.cellType = .none }
+        })
+    }
+    
     
     //MARK: - TicTacEmement Delegate
-    func performStep(_ type: TicTacCellType) -> TicTacCellType {
+    func ticTacElement(prepareToStepWith type: TicTacCellType, withPosition position: Int) -> TicTacCellType {
         if type == .none{
+            if currentStep == .tic { ticPositions.insert(position)}
+            else if currentStep == .tac { tacPositions.insert(position)}
+            
             //переворачиваем текущее значение и возвращаем неперевернутое
             let returnType = currentStep
             currentStep.toggle()
+            if let delegate = delegate{
+                delegate.ticTacField(performSetpWith: currentStep)
+            }
+            checkWin()
             return returnType
         }
         return type
