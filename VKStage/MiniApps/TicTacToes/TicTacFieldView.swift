@@ -13,6 +13,7 @@ class TicTacFieldView: UIView, TicTacElementDelegate{
     
     var fieldColor: UIColor = .systemBackground { didSet{ self.setNeedsDisplay() } }
     var lineWidth: CGFloat = 7 { didSet{ self.setNeedsDisplay() } }
+    private var currentStep: TicTacCellType = .tic
     
     private var ticTacElements: [TicTacElementView] = [] //клеточки
     
@@ -52,8 +53,14 @@ class TicTacFieldView: UIView, TicTacElementDelegate{
     }
     
     //MARK: - TicTacEmement Delegate
-    func performStep() -> TicTacFieldType {
-        return [.tic, .tac].randomElement()!
+    func performStep(_ type: TicTacCellType) -> TicTacCellType {
+        if type == .none{
+            //переворачиваем текущее значение и возвращаем неперевернутое
+            let returnType = currentStep
+            currentStep.toggle()
+            return returnType
+        }
+        return type
     }
     
     //MARK: - Drawing

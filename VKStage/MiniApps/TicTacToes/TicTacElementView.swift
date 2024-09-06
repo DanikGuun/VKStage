@@ -12,7 +12,7 @@ import CoreGraphics
 class TicTacElementView: UIControl{
     
     var delegate: TicTacElementDelegate?
-    var cellType: TicTacFieldType = .none { didSet { setNeedsDisplay() } }
+    var cellType: TicTacCellType = .none { didSet { setNeedsDisplay() } }
     var margin: CGFloat = 10  { didSet { setNeedsDisplay() } } //если надо сделать с отступом
     var lineWidth: CGFloat = 10 { didSet { setNeedsDisplay() } }
     var ticColor: UIColor = .red { didSet { setNeedsDisplay() } }
@@ -21,8 +21,8 @@ class TicTacElementView: UIControl{
     convenience init(){
         self.init(frame: .zero)
         self.addAction(UIAction(handler: { [unowned self] _ in
-            if cellType == .none, delegate != nil{
-                cellType = delegate!.performStep()
+            if let delegate = delegate{
+                cellType = delegate.performStep(cellType)
             }
         }), for: .touchUpInside)
     }
@@ -82,8 +82,14 @@ class TicTacElementView: UIControl{
     }
 }
 
-enum TicTacFieldType{
+enum TicTacCellType{
     case tic
     case tac
     case none
+    
+    mutating func toggle(){
+        if self != .none{
+            self = self == .tac ? .tic : .tac
+        }
+    }
 }

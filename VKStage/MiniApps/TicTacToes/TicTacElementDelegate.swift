@@ -8,5 +8,11 @@
 import Foundation
 
 protocol TicTacElementDelegate{
-    func performStep() -> TicTacFieldType
+    /**
+     Обрабатывает нажатие на поле
+     - Parameters:
+     - type: текущий тип ячейки
+     - Returns: тип, который примет ячейка после нажатия
+     */
+    func performStep(_ type: TicTacCellType) -> TicTacCellType
 }
