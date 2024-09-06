@@ -19,6 +19,7 @@ class TicTacElementView: UIControl{
     
     convenience init(){
         self.init(frame: .zero)
+        self.addAction(UIAction(handler: {_ in self.cellType = [.tic, .none, .tac].randomElement()!}), for: .touchUpInside)
     }
     
     override func draw(_ rect: CGRect) {
@@ -58,6 +59,16 @@ class TicTacElementView: UIControl{
             drawCircle(at: CGPoint(x: 0 + margin + lineWidth/2, y: height - margin - lineWidth/2), for: ticPath2)
             drawCircle(at: CGPoint(x: width - margin - lineWidth, y: 0 + margin + lineWidth/2), for: ticPath2)
             ticPath2.fill()
+        }
+        
+        else if cellType == .tac{
+            tacColor.setStroke()
+            
+            let tacPath = UIBezierPath()
+            tacPath.lineWidth = lineWidth
+            
+            tacPath.addArc(withCenter: CGPoint(x: width/2, y: height/2), radius: min(width, height)/2 - margin - lineWidth/2, startAngle: 0, endAngle: .pi * 2, clockwise: true)
+            tacPath.stroke()
         }
         //
         
