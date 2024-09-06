@@ -11,6 +11,7 @@ import CoreGraphics
 
 class TicTacElementView: UIControl{
     
+    var delegate: TicTacElementDelegate?
     var cellType: TicTacFieldType = .none { didSet { setNeedsDisplay() } }
     var margin: CGFloat = 10  { didSet { setNeedsDisplay() } } //если надо сделать с отступом
     var lineWidth: CGFloat = 10 { didSet { setNeedsDisplay() } }
@@ -19,7 +20,11 @@ class TicTacElementView: UIControl{
     
     convenience init(){
         self.init(frame: .zero)
-        self.addAction(UIAction(handler: {_ in self.cellType = [.tic, .none, .tac].randomElement()!}), for: .touchUpInside)
+        self.addAction(UIAction(handler: { [unowned self] _ in
+            if cellType == .none, delegate != nil{
+                cellType = delegate!.performStep()
+            }
+        }), for: .touchUpInside)
     }
     
     override func draw(_ rect: CGRect) {
@@ -75,11 +80,10 @@ class TicTacElementView: UIControl{
         //рисуем слой для нолика
     
     }
-    
-    //MARK: - Other
-    enum TicTacFieldType{
-        case tic
-        case tac
-        case none
-    }
+}
+
+enum TicTacFieldType{
+    case tic
+    case tac
+    case none
 }

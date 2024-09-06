@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import CoreGraphics
 
-class TicTacFieldView: UIView{
+class TicTacFieldView: UIView, TicTacElementDelegate{
     
     var fieldColor: UIColor = .systemBackground { didSet{ self.setNeedsDisplay() } }
     var lineWidth: CGFloat = 7 { didSet{ self.setNeedsDisplay() } }
@@ -22,6 +22,7 @@ class TicTacFieldView: UIView{
         //добавляем и отображаем вьюхи
         for _ in 0..<9 {ticTacElements.append(TicTacElementView())}
         ticTacElements.forEach { self.addSubview($0) }
+        ticTacElements.forEach { $0.delegate = self }
         drawTicTacs()
     }
     
@@ -48,6 +49,11 @@ class TicTacFieldView: UIView{
                 }
             }
         }
+    }
+    
+    //MARK: - TicTacEmement Delegate
+    func performStep() -> TicTacFieldType {
+        return [.tic, .tac].randomElement()!
     }
     
     //MARK: - Drawing
