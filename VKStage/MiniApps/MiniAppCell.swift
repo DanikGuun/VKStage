@@ -24,5 +24,4 @@ class MiniAppCell: UICollectionViewListCell {
             self._miniApp = app
         }
     }
-    
 }

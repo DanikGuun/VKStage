@@ -15,6 +15,7 @@ protocol MiniAppProtocol: Identifiable where Self: UIView{
     func setMinSize(animated: Bool)
     func setHalfSize(animated: Bool)
     func setFullSize(animated: Bool)
+    
 }
 
 

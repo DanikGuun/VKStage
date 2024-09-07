@@ -14,7 +14,6 @@ class TicTacView: MiniApp, TicTacFieldDelegate {
     var currentStepLabel = UILabel()
     var currentStepIcon = TicTacElementView()
     
-    
     override func setup() {
         self.addSubview(ticTacField)
         super.setup()
@@ -48,6 +47,7 @@ class TicTacView: MiniApp, TicTacFieldDelegate {
             maker.centerY.equalTo(currentStepLabel.snp.centerY)
             maker.height.width.equalTo(currentStepLabel.snp.height)
         }
+        
     }
     
     //MARK: - TicTacField Delegate
@@ -96,10 +96,12 @@ class TicTacView: MiniApp, TicTacFieldDelegate {
     
     override func setMinSize(animated: Bool = true) {
         super.setMinSize(animated: animated)
+        
     }
     
     override func setHalfSize(animated: Bool = true) {
         super.setHalfSize(animated: animated)
+        ticTacField.setNeedsDisplay()
     }
     
     override func setFullSize(animated: Bool = true) {
@@ -118,6 +120,5 @@ class TicTacView: MiniApp, TicTacFieldDelegate {
         ticTacField.alpha = 1
         currentStepLabel.alpha = 1
         currentStepIcon.alpha = 1
-        ticTacField.setNeedsDisplay()
     }
 }

@@ -18,6 +18,7 @@ class SmallScreenViewController: UIViewController, UICollectionViewDelegate, UIC
         collectionView.delegate = self
         setupResizeButton()
         AppData.apps.forEach { $0.delegate = self }
+        
     }
 
     //MARK: - ToolBar
@@ -73,6 +74,16 @@ class SmallScreenViewController: UIViewController, UICollectionViewDelegate, UIC
         let width = collectionView.bounds.width
         let height = app.currentState == .half ? collectionView.bounds.height / 2 : collectionView.bounds.height / 8
         return CGSize(width: width, height: height)
+    }
+    
+    //чтобы вьюхи, которые не поместились на экран во время раскрытия, дорисовались
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let app = AppData.apps[indexPath.row]
+        switch app.currentState{
+        case .minimum: app.setMinSize(animated: true)
+        case .half: app.setHalfSize(animated: true)
+        case .full: app.setFullSize(animated: true)
+        }
     }
     
     private func resetCollectionLayout(){

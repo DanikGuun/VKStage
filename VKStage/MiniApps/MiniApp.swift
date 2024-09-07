@@ -15,6 +15,8 @@ class MiniApp: UIControl, MiniAppProtocol{
     var iconView = UIImageView()
     var currentState: MiniAppCurrentSize = .minimum
     var delegate: (any MiniAppDelegate)?
+    var hideElementsCompelition: () -> () = {}
+    var showElementCompelition: () -> () = {}
     
     convenience init(){
         self.init(frame: .zero)
@@ -60,7 +62,7 @@ class MiniApp: UIControl, MiniAppProtocol{
             self.setNeedsLayout()
             self.hideElements()
             self.layoutIfNeeded()
-        })
+        }, completion: {_ in self.hideElementsCompelition() })
     }
     
     func setHalfSize(animated: Bool = true) {
@@ -73,7 +75,7 @@ class MiniApp: UIControl, MiniAppProtocol{
                 maker.bottom.leading.equalToSuperview().inset(10)
             }
             self.layoutIfNeeded()
-        })
+        }, completion: {_ in self.showElementCompelition() })
     }
     
     func setFullSize(animated: Bool = true) {
@@ -86,7 +88,7 @@ class MiniApp: UIControl, MiniAppProtocol{
                 maker.center.equalToSuperview()
             }
             self.layoutIfNeeded()
-        })
+        }, completion: {_ in self.showElementCompelition()})
     }
     
     //MARK: - Показываем или прячем элементы при сворачиввании
@@ -96,6 +98,5 @@ class MiniApp: UIControl, MiniAppProtocol{
     internal func hideElements(animated: Bool = true){
         
     }
-    
 }
 
