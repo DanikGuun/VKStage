@@ -30,6 +30,11 @@
 		56B926F92C898DA500125007 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B926F82C898DA500125007 /* LocationModel.swift */; };
 		56BDB4292C8CC3D300A50850 /* SepiaFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BDB4282C8CC3D300A50850 /* SepiaFilterView.swift */; };
 		56BDB42B2C8CE6E900A50850 /* MiniAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BDB42A2C8CE6E900A50850 /* MiniAppDelegate.swift */; };
+		56BDB42D2C8CF88600A50850 /* DisterFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BDB42C2C8CF88600A50850 /* DisterFilterView.swift */; };
+		56BDB4312C8D002600A50850 /* HatchedFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BDB4302C8D002600A50850 /* HatchedFilter.swift */; };
+		56BDB4332C8D04E300A50850 /* BlurFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BDB4322C8D04E300A50850 /* BlurFilterView.swift */; };
+		56BDB4352C8D066B00A50850 /* PixelFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BDB4342C8D066B00A50850 /* PixelFilterView.swift */; };
+		56BDB4372C8D093600A50850 /* NoirFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BDB4362C8D093600A50850 /* NoirFilterView.swift */; };
 		56CBECB92C8B14150050A2CC /* TicTacElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CBECB82C8B14150050A2CC /* TicTacElementView.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +76,11 @@
 		56B926F82C898DA500125007 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		56BDB4282C8CC3D300A50850 /* SepiaFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SepiaFilterView.swift; sourceTree = "<group>"; };
 		56BDB42A2C8CE6E900A50850 /* MiniAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppDelegate.swift; sourceTree = "<group>"; };
+		56BDB42C2C8CF88600A50850 /* DisterFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisterFilterView.swift; sourceTree = "<group>"; };
+		56BDB4302C8D002600A50850 /* HatchedFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatchedFilter.swift; sourceTree = "<group>"; };
+		56BDB4322C8D04E300A50850 /* BlurFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurFilterView.swift; sourceTree = "<group>"; };
+		56BDB4342C8D066B00A50850 /* PixelFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelFilterView.swift; sourceTree = "<group>"; };
+		56BDB4362C8D093600A50850 /* NoirFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoirFilterView.swift; sourceTree = "<group>"; };
 		56CBECB82C8B14150050A2CC /* TicTacElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacElementView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,6 +178,11 @@
 			children = (
 				56B8555C2C8C3EA800B612C7 /* FilterView.swift */,
 				56BDB4282C8CC3D300A50850 /* SepiaFilterView.swift */,
+				56BDB42C2C8CF88600A50850 /* DisterFilterView.swift */,
+				56BDB4302C8D002600A50850 /* HatchedFilter.swift */,
+				56BDB4322C8D04E300A50850 /* BlurFilterView.swift */,
+				56BDB4342C8D066B00A50850 /* PixelFilterView.swift */,
+				56BDB4362C8D093600A50850 /* NoirFilterView.swift */,
 			);
 			path = Filters;
 			sourceTree = "<group>";
@@ -259,22 +274,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56BDB42D2C8CF88600A50850 /* DisterFilterView.swift in Sources */,
 				56B926F72C897D7700125007 /* MiniApp.swift in Sources */,
 				567DB2D32C884A5B002D6020 /* TemperatureView.swift in Sources */,
 				56B926F52C897C6500125007 /* InfoMiniAppView.swift in Sources */,
 				56524A8B2C8A31E500DA1B98 /* TicTacView.swift in Sources */,
 				56B8555D2C8C3EA800B612C7 /* FilterView.swift in Sources */,
+				56BDB4332C8D04E300A50850 /* BlurFilterView.swift in Sources */,
 				56BDB42B2C8CE6E900A50850 /* MiniAppDelegate.swift in Sources */,
 				56B926F12C88FAE000125007 /* LocationView.swift in Sources */,
+				56BDB4372C8D093600A50850 /* NoirFilterView.swift in Sources */,
 				56B926F92C898DA500125007 /* LocationModel.swift in Sources */,
 				567DB2CE2C884847002D6020 /* MiniAppProtocol.swift in Sources */,
 				56B8555A2C8BAD8C00B612C7 /* TicTacFieldDelegate.swift in Sources */,
 				567DB2DE2C885C87002D6020 /* MiniAppCell.swift in Sources */,
+				56BDB4312C8D002600A50850 /* HatchedFilter.swift in Sources */,
 				567DB2D82C884EF4002D6020 /* SmallScreenViewController.swift in Sources */,
 				56CBECB92C8B14150050A2CC /* TicTacElementView.swift in Sources */,
 				56524A8D2C8A386C00DA1B98 /* TicTacFieldView.swift in Sources */,
 				56B855582C8BA0E000B612C7 /* TicTacElementDelegate.swift in Sources */,
 				56B926F32C89784400125007 /* TemperatureModel.swift in Sources */,
+				56BDB4352C8D066B00A50850 /* PixelFilterView.swift in Sources */,
 				567DB2B82C88257B002D6020 /* AppDelegate.swift in Sources */,
 				567DB2BA2C88257B002D6020 /* SceneDelegate.swift in Sources */,
 				56BDB4292C8CC3D300A50850 /* SepiaFilterView.swift in Sources */,

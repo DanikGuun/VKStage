@@ -1,28 +1,27 @@
 //
-//  SepiaFilterView.swift
+//  KaleidoscopeFilterView.swift
 //  VKStage
 //
-//  Created by Данила Бондарь on 07.09.2024.
+//  Created by Данила Бондарь on 08.09.2024.
 //
 
 import Foundation
-import UIKit
 import CoreImage.CIFilterBuiltins
+import UIKit
 
-class SepiaFilterView: FilterView{
+class PixelFilterView: FilterView{
     
-    private var filter = CIFilter.sepiaTone()
+    var filter = CIFilter.pixellate()
     
     override func setup() {
-        startGradientColor = .sepiaFilterStartGradient
-        endGradienColor = .sepiaFilterEndGradient
         super.setup()
-        filterNameLabel.text = "Сепия"
+        filterNameLabel.text = "Пиксели"
     }
     override func applyFilter(value: Float) {
         filter.inputImage = CIImage(image: image)
-        filter.intensity = value
         
+        filter.scale = max(0.001, value*30)
+    
         guard let outputImage = filter.outputImage else { return }
         imageView.image = UIImage(ciImage: outputImage)
     }

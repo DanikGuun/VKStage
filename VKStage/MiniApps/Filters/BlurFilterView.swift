@@ -1,27 +1,27 @@
 //
-//  SepiaFilterView.swift
+//  File.swift
 //  VKStage
 //
-//  Created by Данила Бондарь on 07.09.2024.
+//  Created by Данила Бондарь on 08.09.2024.
 //
 
 import Foundation
 import UIKit
 import CoreImage.CIFilterBuiltins
 
-class SepiaFilterView: FilterView{
+class BlurFilterView: FilterView{
     
-    private var filter = CIFilter.sepiaTone()
+    private var filter = CIFilter.motionBlur()
     
     override func setup() {
-        startGradientColor = .sepiaFilterStartGradient
-        endGradienColor = .sepiaFilterEndGradient
         super.setup()
-        filterNameLabel.text = "Сепия"
+        filterNameLabel.text = "Размытие"
     }
     override func applyFilter(value: Float) {
         filter.inputImage = CIImage(image: image)
-        filter.intensity = value
+    
+        filter.angle = 0
+        filter.radius = value * 10
         
         guard let outputImage = filter.outputImage else { return }
         imageView.image = UIImage(ciImage: outputImage)

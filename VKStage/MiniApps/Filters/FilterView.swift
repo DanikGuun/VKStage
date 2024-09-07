@@ -15,12 +15,11 @@ import PhotosUI
 class FilterView: MiniApp, PHPickerViewControllerDelegate{
     var startGradientColor: UIColor = .mainFilterStartGradient
     var endGradienColor: UIColor = .mainFilterEndGradient
-    var filter: CIFilter?
-    var image = UIImage() { didSet { applyFilter(intensity: filterIntensitySlider.value) } }
+    var image = UIImage() { didSet { applyFilter(value: filterIntensitySlider.value) } }
     
     internal var filterNameLabel = UILabel()
+    internal var imageView = UIImageView(frame: .zero)
     
-    private var imageView = UIImageView(frame: .zero)
     private var getPhotoButton = UIButton()
     private var filterIntensitySlider = UISlider()
     private weak var viewController: UIViewController? {
@@ -51,7 +50,7 @@ class FilterView: MiniApp, PHPickerViewControllerDelegate{
         filterIntensitySlider.maximumValue = 1.0
         filterIntensitySlider.value = 0.0
         filterIntensitySlider.addAction(UIAction(handler: { act in
-            self.applyFilter(intensity: self.filterIntensitySlider.value)
+            self.applyFilter(value: self.filterIntensitySlider.value)
         }), for: .valueChanged)
         filterIntensitySlider.snp.makeConstraints { maker in
             maker.leading.trailing.equalToSuperview().inset(20)
@@ -65,8 +64,6 @@ class FilterView: MiniApp, PHPickerViewControllerDelegate{
             maker.centerX.equalToSuperview()
             maker.size.equalToSuperview().multipliedBy(0.7)
         }
-        imageView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         image = UIImage(named: "CuteCat")!
         
         self.addSubview(getPhotoButton)
@@ -80,14 +77,7 @@ class FilterView: MiniApp, PHPickerViewControllerDelegate{
     }
     
     //MARK: - Filtering
-    private func applyFilter(intensity: Float){
-        guard let filter = filter else { print("filter not set"); return }
-        filter.setValue(CIImage(image: image), forKey: kCIInputImageKey)
-        filter.setValue(intensity, forKey: kCIInputIntensityKey)
-        
-        guard let outputImage = filter.outputImage else { return }
-        imageView.image = UIImage(ciImage: outputImage)
-    }
+    internal func applyFilter(value: Float){} //для наследования
     
     //MARK: - Photo Library
     private func getPhotoFromLibrary(){
@@ -108,14 +98,15 @@ class FilterView: MiniApp, PHPickerViewControllerDelegate{
                 Task(priority: .high, operation: {
                     await MainActor.run{
                         if error == nil{
-                            self.image = item as! UIImage
+                            let img = item as! UIImage
+                            self.image = img
                         }
                         else {print(error!)}
-                        viewController.dismiss(animated: true)
                     }
                 })
             })
         }
+        viewController.dismiss(animated: true)
     }
     
     //MARK: - Drawing

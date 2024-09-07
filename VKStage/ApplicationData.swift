@@ -11,10 +11,9 @@ import UIKit
 var AppData = ApplicationData()
 
 struct ApplicationData{
-    fileprivate init(){}
     
     var miniAppsDataSource: UICollectionViewDiffableDataSource<Section, UUID>?
-    var apps: [any MiniAppProtocol] = [TemperatureView(), LocationView(), TicTacView(), SepiaFilterView()]
+    var apps: [any MiniAppProtocol] = [TemperatureView(), LocationView(), TicTacView(), SepiaFilterView(), DisterFilterView(), HatchedFilterView(), BlurFilterView(), PixelFilterView()]
 }
 
 enum Section{
