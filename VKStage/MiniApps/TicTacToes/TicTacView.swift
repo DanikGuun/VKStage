@@ -10,8 +10,6 @@ import CoreGraphics
 
 class TicTacView: MiniApp, TicTacFieldDelegate {
 
-    
-
     var ticTacField = TicTacFieldView()
     var currentStepLabel = UILabel()
     var currentStepIcon = TicTacElementView()

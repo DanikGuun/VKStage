@@ -23,6 +23,7 @@ class MiniApp: UIView, MiniAppProtocol{
         self.addSubview(iconView)
         iconView.snp.makeConstraints { maker in
             maker.bottom.leading.equalToSuperview().inset(10)
+            maker.height.equalTo(self.snp.width)
         }
         iconView.tintColor = .systemBackground
         iconView.preferredSymbolConfiguration = UIImage.SymbolConfiguration(pointSize: 36, weight: .semibold)

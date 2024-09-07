@@ -19,6 +19,7 @@ class TicTacElementView: UIControl{
     var tacColor: UIColor = .tac { didSet { setNeedsDisplay() } }
     var position: Int = 0
     
+    //MARK: - Initialiaze
     convenience init(){
         self.init(frame: .zero)
         self.addAction(UIAction(handler: { [unowned self] _ in
