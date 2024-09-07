@@ -84,8 +84,3 @@ class MiniApp: UIView, MiniAppProtocol{
     
 }
 
-enum MiniAppCurrentSize{
-    case minimum
-    case half
-    case full
-}
