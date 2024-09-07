@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SmallScreenViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class SmallScreenViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, MiniAppDelegate {
     
     @IBOutlet weak var resizeButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -17,17 +17,13 @@ class SmallScreenViewController: UIViewController, UICollectionViewDelegate, UIC
         setupSnapshot()
         collectionView.delegate = self
         setupResizeButton()
+        AppData.apps.forEach { $0.delegate = self }
     }
 
     //MARK: - ToolBar
     
     private func changeSizeButtonPressed(_ sender: UIButton) {
-
-        UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseInOut] ,animations: {
-            self.collectionView.collectionViewLayout.invalidateLayout()
-            self.collectionView.layoutIfNeeded()
-        })
-        
+        resetCollectionLayout()
         AppData.apps.forEach {
             if sender.isSelected { $0.setHalfSize(animated: true) }
             else { $0.setMinSize(animated: true) }
@@ -45,6 +41,11 @@ class SmallScreenViewController: UIViewController, UICollectionViewDelegate, UIC
             button.configuration = conf
         }
         resizeButton.addAction(UIAction(handler: {[unowned self] _ in self.changeSizeButtonPressed(resizeButton)}), for: .touchUpInside)
+    }
+    
+    //MARK: - MiniAppDelegate
+    func miniApp(hasChangeSizeWith size: MiniAppCurrentSize) {
+        resetCollectionLayout()
     }
     
     //MARK: - CollectionView
@@ -68,8 +69,16 @@ class SmallScreenViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let app = AppData.apps[indexPath.row]
         let width = collectionView.bounds.width
-        let height = resizeButton.isSelected ? collectionView.bounds.height / 2 : collectionView.bounds.height / 8
+        let height = app.currentState == .half ? collectionView.bounds.height / 2 : collectionView.bounds.height / 8
         return CGSize(width: width, height: height)
+    }
+    
+    private func resetCollectionLayout(){
+        UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseInOut] ,animations: {
+            self.collectionView.collectionViewLayout.invalidateLayout()
+            self.collectionView.layoutIfNeeded()
+        })
     }
 }

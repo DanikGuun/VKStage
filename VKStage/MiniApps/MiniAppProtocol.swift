@@ -11,6 +11,7 @@ import UIKit
 protocol MiniAppProtocol: Identifiable where Self: UIView{
     var id: UUID { get set }
     var currentState: MiniAppCurrentSize { get set}
+    var delegate: MiniAppDelegate? { get set }
     func setMinSize(animated: Bool)
     func setHalfSize(animated: Bool)
     func setFullSize(animated: Bool)
