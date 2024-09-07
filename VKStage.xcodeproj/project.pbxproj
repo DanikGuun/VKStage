@@ -28,6 +28,7 @@
 		56B926F52C897C6500125007 /* InfoMiniAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B926F42C897C6500125007 /* InfoMiniAppView.swift */; };
 		56B926F72C897D7700125007 /* MiniApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B926F62C897D7700125007 /* MiniApp.swift */; };
 		56B926F92C898DA500125007 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B926F82C898DA500125007 /* LocationModel.swift */; };
+		56BDB4292C8CC3D300A50850 /* SepiaFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BDB4282C8CC3D300A50850 /* SepiaFilterView.swift */; };
 		56CBECB92C8B14150050A2CC /* TicTacElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CBECB82C8B14150050A2CC /* TicTacElementView.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		56B926F42C897C6500125007 /* InfoMiniAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMiniAppView.swift; sourceTree = "<group>"; };
 		56B926F62C897D7700125007 /* MiniApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniApp.swift; sourceTree = "<group>"; };
 		56B926F82C898DA500125007 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		56BDB4282C8CC3D300A50850 /* SepiaFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SepiaFilterView.swift; sourceTree = "<group>"; };
 		56CBECB82C8B14150050A2CC /* TicTacElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacElementView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				56B8555C2C8C3EA800B612C7 /* FilterView.swift */,
+				56BDB4282C8CC3D300A50850 /* SepiaFilterView.swift */,
 			);
 			path = Filters;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				56B926F32C89784400125007 /* TemperatureModel.swift in Sources */,
 				567DB2B82C88257B002D6020 /* AppDelegate.swift in Sources */,
 				567DB2BA2C88257B002D6020 /* SceneDelegate.swift in Sources */,
+				56BDB4292C8CC3D300A50850 /* SepiaFilterView.swift in Sources */,
 				567DB2DC2C88508A002D6020 /* ApplicationData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

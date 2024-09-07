@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 import SnapKit
 import CoreImage
-import CoreImage.CIFilterBuiltins
 import CoreGraphics
+import PhotosUI
 
-class FilterView: MiniApp{
+class FilterView: MiniApp, PHPickerViewControllerDelegate{
     var startGradientColor: UIColor = .mainFilterStartGradient
     var endGradienColor: UIColor = .mainFilterEndGradient
     var filter: CIFilter?
@@ -21,7 +21,16 @@ class FilterView: MiniApp{
     internal var filterNameLabel = UILabel()
     
     private var imageView = UIImageView(frame: .zero)
+    private var getPhotoButton = UIButton()
     private var filterIntensitySlider = UISlider()
+    private weak var viewController: UIViewController? {
+        var responder: UIResponder? = self
+        while responder?.next != nil{
+            if let controller = responder as? UIViewController { return controller }
+            responder = responder?.next
+        }
+        return nil
+    }
 
     //MARK: - Initialize
     override func setup() {
@@ -58,16 +67,54 @@ class FilterView: MiniApp{
         imageView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         image = UIImage(named: "CuteCat")!
+        
+        self.addSubview(getPhotoButton)
+        let photoIconConf = UIImage.SymbolConfiguration(pointSize: 26, weight: .semibold)
+        let photoIcon = UIImage(systemName: "photo.stack", withConfiguration: photoIconConf)
+        getPhotoButton.setImage(photoIcon, for: .normal)
+        getPhotoButton.snp.makeConstraints { maker in
+            maker.trailing.bottom.equalToSuperview().inset(20)
+        }
+        getPhotoButton.addAction(UIAction(handler: {_ in self.getPhotoFromLibrary() }), for: .touchUpInside)
     }
     
     //MARK: - Filtering
     private func applyFilter(intensity: Float){
-        filter = CIFilter(name: "CISepiaTone")
-        filter?.setValue(CIImage(image: image), forKey: kCIInputImageKey)
-        filter?.setValue(intensity, forKey: kCIInputIntensityKey)
+        guard let filter = filter else { print("filter not set"); return }
+        filter.setValue(CIImage(image: image), forKey: kCIInputImageKey)
+        filter.setValue(intensity, forKey: kCIInputIntensityKey)
         
-        guard let outputImage = filter?.outputImage else { return }
+        guard let outputImage = filter.outputImage else { return }
         imageView.image = UIImage(ciImage: outputImage)
+    }
+    
+    //MARK: - Photo Library
+    private func getPhotoFromLibrary(){
+        guard let controller = viewController else { return }
+        var conf = PHPickerConfiguration()
+        conf.filter = .images
+        conf.selectionLimit = 1
+        let picker = PHPickerViewController(configuration: conf)
+        picker.delegate = self
+        controller.present(picker, animated: true)
+    }
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        guard let photoProvider = results.first?.itemProvider else { return }
+        guard let viewController = viewController else { return }
+        if photoProvider.canLoadObject(ofClass: UIImage.self){
+            photoProvider.loadObject(ofClass: UIImage.self, completionHandler: {(item, error) in
+                Task(priority: .high, operation: {
+                    await MainActor.run{
+                        if error == nil{
+                            self.image = item as! UIImage
+                        }
+                        else {print(error!)}
+                        viewController.dismiss(animated: true)
+                    }
+                })
+            })
+        }
     }
     
     //MARK: - Drawing
@@ -86,10 +133,12 @@ class FilterView: MiniApp{
     override func hideElements(animated: Bool = true) {
         filterIntensitySlider.alpha = 0
         imageView.alpha = 0
+        getPhotoButton.alpha = 0
     }
     override func showElements(animated: Bool = true) {
         filterIntensitySlider.alpha = 1
         imageView.alpha = 1
+        getPhotoButton.alpha = 1
     }
     
 }
