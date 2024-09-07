@@ -7,13 +7,12 @@
 
 import UIKit
 
-class SmallScreenViewController: UIViewController, UICollectionViewDelegate {
+class SmallScreenViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var resizeButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
-        setupCollectionView()
         setupDataSource()
         setupSnapshot()
         collectionView.delegate = self
@@ -23,8 +22,12 @@ class SmallScreenViewController: UIViewController, UICollectionViewDelegate {
     //MARK: - ToolBar
     
     private func changeSizeButtonPressed(_ sender: UIButton) {
-        let targetMultiplyer: CGFloat = sender.isSelected ? 1/2 : 1/8
-        collectionView.setCollectionViewLayout(getLayout(multiplyer: targetMultiplyer), animated: true)
+
+        UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseInOut] ,animations: {
+            self.collectionView.collectionViewLayout.invalidateLayout()
+            self.collectionView.layoutIfNeeded()
+        })
+        
         AppData.apps.forEach {
             if sender.isSelected { $0.setHalfSize(animated: true) }
             else { $0.setMinSize(animated: true) }
@@ -45,9 +48,6 @@ class SmallScreenViewController: UIViewController, UICollectionViewDelegate {
     }
     
     //MARK: - CollectionView
-    private func setupCollectionView(){
-        collectionView.collectionViewLayout = getLayout(multiplyer: 1/8)
-    }
     
     private func setupDataSource(){
         let registrator = UICollectionView.CellRegistration<MiniAppCell, UUID>(handler: {(cell, indexPath, id) in
@@ -67,17 +67,9 @@ class SmallScreenViewController: UIViewController, UICollectionViewDelegate {
         AppData.miniAppsDataSource?.apply(snapshot)
     }
     
-    private func getLayout(multiplyer: CGFloat) -> UICollectionViewCompositionalLayout{
-        
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
-        let item  = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(multiplyer))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: .fixed(0), top: .fixed(0), trailing: .fixed(0), bottom: .fixed(10))
-        
-        let section = NSCollectionLayoutSection(group: group)
-        
-        return UICollectionViewCompositionalLayout(section: section)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.bounds.width
+        let height = resizeButton.isSelected ? collectionView.bounds.height / 2 : collectionView.bounds.height / 8
+        return CGSize(width: width, height: height)
     }
 }

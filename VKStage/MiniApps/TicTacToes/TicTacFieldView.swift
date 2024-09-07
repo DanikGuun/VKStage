@@ -178,4 +178,5 @@ final class TicTacFieldView: UIView, TicTacElementDelegate{
         super.setNeedsDisplay()
         ticTacElements.forEach { $0.setNeedsDisplay() }
     }
+
 }

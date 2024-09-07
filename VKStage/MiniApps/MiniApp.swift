@@ -13,6 +13,7 @@ import CoreGraphics
 class MiniApp: UIView, MiniAppProtocol{
     var id = UUID()
     var iconView = UIImageView()
+    var currentState: MiniAppCurrentSize = .minimum
     
     convenience init(){
         self.init(frame: .zero)
@@ -33,6 +34,7 @@ class MiniApp: UIView, MiniAppProtocol{
     //MARK: - MiniApp Protocol
     
     func setMinSize(animated: Bool = true) {
+        currentState = .minimum
         UIView.animate(withDuration: animated ? 0.5 : 0, animations: {
             self.setNeedsLayout()
             self.iconView.snp.remakeConstraints { maker in
@@ -49,6 +51,7 @@ class MiniApp: UIView, MiniAppProtocol{
     }
     
     func setHalfSize(animated: Bool = true) {
+        currentState = .half
         UIView.animate(withDuration: animated ? 0.5 : 0, animations: {
             self.setNeedsLayout()
             self.showElements()
@@ -60,6 +63,7 @@ class MiniApp: UIView, MiniAppProtocol{
     }
     
     func setFullSize(animated: Bool = true) {
+        currentState = .full
         UIView.animate(withDuration: animated ? 0.5 : 0, animations: {
             self.setNeedsLayout()
             self.showElements()
@@ -72,11 +76,16 @@ class MiniApp: UIView, MiniAppProtocol{
     
     //MARK: - Показываем или прячем элементы при сворачиввании
     internal func showElements(animated: Bool = true){
-        
     }
     
     internal func hideElements(animated: Bool = true){
         
     }
     
+}
+
+enum MiniAppCurrentSize{
+    case minimum
+    case half
+    case full
 }

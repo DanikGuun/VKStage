@@ -9,10 +9,11 @@ import UIKit
 import CoreGraphics
 
 class TicTacView: MiniApp, TicTacFieldDelegate {
-
+    
     var ticTacField = TicTacFieldView()
     var currentStepLabel = UILabel()
     var currentStepIcon = TicTacElementView()
+    
     
     override func setup() {
         self.addSubview(ticTacField)
