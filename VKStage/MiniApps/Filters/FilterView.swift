@@ -40,9 +40,10 @@ class FilterView: MiniApp, PHPickerViewControllerDelegate{
         self.addSubview(filterNameLabel)
         filterNameLabel.text = "Имя фильтра"
         filterNameLabel.textColor = .systemBackground
+        filterNameLabel.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
         filterNameLabel.snp.makeConstraints { maker in
             maker.centerY.equalTo(iconView.snp.centerY)
-            maker.leading.equalTo(iconView.snp.trailing)
+            maker.leading.equalTo(iconView.snp.trailing).offset(5)
         }
         
         self.addSubview(filterIntensitySlider)

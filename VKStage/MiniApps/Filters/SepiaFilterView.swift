@@ -18,6 +18,8 @@ class SepiaFilterView: FilterView{
     
     override func setup() {
         filter = CIFilter.sepiaTone()
+        startGradientColor = .sepiaFilterStartGradient
+        endGradienColor = .sepiaFilterEndGradient
         super.setup()
         filterNameLabel.text = "Сепия"
     }

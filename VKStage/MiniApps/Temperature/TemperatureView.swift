@@ -42,7 +42,7 @@ final class TemperatureView: InfoMiniAppView {
         guard let context = UIGraphicsGetCurrentContext() else { return }
         //Gradient Drawing
         let colorSpace = CGColorSpace(name: CGColorSpace.sRGB)
-        let color = [CGColor(red: 46/255, green: 156/255, blue: 240/255, alpha: 1), CGColor(red: 63/255, green: 181/255, blue: 192/255, alpha: 1)]
+        let color = [UIColor.temperatureStartGradient.cgColor, UIColor.temperatureEndGradient.cgColor]
         
         guard let gradient = CGGradient(colorsSpace: colorSpace, colors: color as CFArray, locations: [0.0, 1.0]) else { return }
         context.drawLinearGradient(gradient, start: CGPoint(x: 0, y: 0), end: CGPoint(x: 0, y: rect.height), options: [])
