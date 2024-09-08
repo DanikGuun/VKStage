@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SmallScreenViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, MiniAppDelegate {
+class SmallScreenViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, MiniAppDelegate{
     
     @IBOutlet weak var resizeButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -19,16 +19,47 @@ class SmallScreenViewController: UIViewController, UICollectionViewDelegate, UIC
         setupResizeButton()
         AppData.apps.forEach { $0.delegate = self }
         
+        //кнопка перехода на фулскрин
+        for app in AppData.apps{
+            let fullScreenButton = UIButton(configuration: .plain())
+            var symbConf = UIImage.SymbolConfiguration(pointSize: 17, weight: .semibold)
+            let buttonImage = UIImage(systemName: "chevron.right", withConfiguration: symbConf)
+            fullScreenButton.setImage(buttonImage, for: .normal)
+            fullScreenButton.restorationIdentifier = "fullButton"
+            app.addSubview(fullScreenButton)
+            fullScreenButton.snp.makeConstraints { maker in
+                maker.trailing.top.equalToSuperview().inset(15)
+            }
+            fullScreenButton.addAction(UIAction(handler: {_ in
+                self.performSegue(withIdentifier: "fullScreenSegue", sender: app)
+            }), for: .touchUpInside)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        for app in AppData.apps{
+            app.subviews.first(where: {$0.restorationIdentifier == "fullButton"} )?.isHidden = false
+            if app.currentState == .full{
+                app.setHalfSize(animated: false)
+            }
+        }
+        collectionView.reloadData()
+        resetCollectionLayout()
     }
 
     //MARK: - ToolBar
     
-    private func changeSizeButtonPressed(_ sender: UIButton) {
-        resetCollectionLayout()
+    private func resize(isExpanded: Bool){
         AppData.apps.forEach {
-            if sender.isSelected { $0.setHalfSize(animated: true) }
+            if isExpanded { $0.setHalfSize(animated: true) }
             else { $0.setMinSize(animated: true) }
         }
+        resetCollectionLayout()
+    }
+    
+    private func changeSizeButtonPressed(_ sender: UIButton) {
+        resize(isExpanded: sender.isSelected)
     }
     
     private func setupResizeButton(){
@@ -54,6 +85,8 @@ class SmallScreenViewController: UIViewController, UICollectionViewDelegate, UIC
     private func setupDataSource(){
         let registrator = UICollectionView.CellRegistration<MiniAppCell, UUID>(handler: {(cell, indexPath, id) in
             if let app = AppData.apps.first(where: {$0.id == id}){
+                
+                //Кнопка Перехода на полный экран
                 cell.miniApp = app
             }
         })
@@ -73,7 +106,7 @@ class SmallScreenViewController: UIViewController, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let app = AppData.apps[indexPath.row]
         let width = collectionView.bounds.width
-        let height = app.currentState == .half ? collectionView.bounds.height / 2 : collectionView.bounds.height / 8
+        let height = app.currentState != .minimum ? collectionView.bounds.height / 2 : collectionView.bounds.height / 8
         return CGSize(width: width, height: height)
     }
     
@@ -92,5 +125,11 @@ class SmallScreenViewController: UIViewController, UICollectionViewDelegate, UIC
             self.collectionView.collectionViewLayout.invalidateLayout()
             self.collectionView.layoutIfNeeded()
         })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? FullScreenViewController, let app = sender as? MiniApp{
+            destination.miniAppView = app
+        }
     }
 }

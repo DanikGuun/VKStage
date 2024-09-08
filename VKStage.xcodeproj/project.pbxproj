@@ -24,6 +24,7 @@
 		56AB7C072C8E22BE00F83CC7 /* SecondTimerAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AB7C062C8E22BE00F83CC7 /* SecondTimerAppView.swift */; };
 		56AB7C092C8E306B00F83CC7 /* SplitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AB7C082C8E306B00F83CC7 /* SplitTableViewController.swift */; };
 		56AB7C0D2C8E3FBD00F83CC7 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AB7C0C2C8E3FBD00F83CC7 /* SplitViewController.swift */; };
+		56AB7C0F2C8E446800F83CC7 /* FullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AB7C0E2C8E446800F83CC7 /* FullScreenViewController.swift */; };
 		56B855582C8BA0E000B612C7 /* TicTacElementDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B855572C8BA0E000B612C7 /* TicTacElementDelegate.swift */; };
 		56B8555A2C8BAD8C00B612C7 /* TicTacFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B855592C8BAD8C00B612C7 /* TicTacFieldDelegate.swift */; };
 		56B8555D2C8C3EA800B612C7 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B8555C2C8C3EA800B612C7 /* FilterView.swift */; };
@@ -77,6 +78,7 @@
 		56AB7C062C8E22BE00F83CC7 /* SecondTimerAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTimerAppView.swift; sourceTree = "<group>"; };
 		56AB7C082C8E306B00F83CC7 /* SplitTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitTableViewController.swift; sourceTree = "<group>"; };
 		56AB7C0C2C8E3FBD00F83CC7 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		56AB7C0E2C8E446800F83CC7 /* FullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenViewController.swift; sourceTree = "<group>"; };
 		56B855572C8BA0E000B612C7 /* TicTacElementDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacElementDelegate.swift; sourceTree = "<group>"; };
 		56B855592C8BAD8C00B612C7 /* TicTacFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacFieldDelegate.swift; sourceTree = "<group>"; };
 		56B8555C2C8C3EA800B612C7 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				567DB2D72C884EF4002D6020 /* SmallScreenViewController.swift */,
 				56AB7C082C8E306B00F83CC7 /* SplitTableViewController.swift */,
 				56AB7C0C2C8E3FBD00F83CC7 /* SplitViewController.swift */,
+				56AB7C0E2C8E446800F83CC7 /* FullScreenViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				56B8555D2C8C3EA800B612C7 /* FilterView.swift in Sources */,
 				56BDB4332C8D04E300A50850 /* BlurFilterView.swift in Sources */,
 				56BDB42B2C8CE6E900A50850 /* MiniAppDelegate.swift in Sources */,
+				56AB7C0F2C8E446800F83CC7 /* FullScreenViewController.swift in Sources */,
 				56AB7C012C8DE48400F83CC7 /* TimerAppView.swift in Sources */,
 				56B926F12C88FAE000125007 /* LocationView.swift in Sources */,
 				56BDB4372C8D093600A50850 /* CartoonFilterView.swift in Sources */,
