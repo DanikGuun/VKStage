@@ -31,7 +31,7 @@ class TimerView: UIView{
         anim.keyPath = "strokeEnd"
         anim.fromValue = progress
         anim.toValue = value
-        anim.duration = 5
+        anim.duration = 1
         anim.isRemovedOnCompletion = false
         anim.fillMode = .forwards
         timerLayer.add(anim, forKey: "strokeEnd")

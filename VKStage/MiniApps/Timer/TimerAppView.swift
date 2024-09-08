@@ -12,13 +12,22 @@ import CoreGraphics
 
 class TimerAppView: MiniApp, UIPickerViewDelegate, UIPickerViewDataSource{
     
-    var startGradientColor: UIColor = .timerGradientStart
-    var endGradientColor: UIColor = .timerGradientEnd
+    var startGradientColor: UIColor = .timerGradientStart { didSet { self.setNeedsDisplay() } }
+    var endGradientColor: UIColor = .timerGradientEnd { didSet { self.setNeedsDisplay() } }
     var timer: TimerView = TimerView()
     var timePickerButton: UIButton = UIButton()
     var timerControllerButton = UIButton()
     
     private var timePicker = UIPickerView()
+    private var secondsTimer = Timer()
+    private var currentSeconds: Int = 0 //сам четчик секунд
+    private var startSeconds: Int = 0 //изначальный счетчик чтобы считать пропорцию
+    private var currentTime: (hours: Int, minutes: Int, seconds: Int){
+        let hours = currentSeconds / 3600
+        let minutes = (currentSeconds - hours * 3600) / 60
+        let seconds = currentSeconds - hours * 3600 - minutes * 60
+        return (hours, minutes, seconds)
+    }
     
     override func setup() {
         super.setup()
@@ -65,13 +74,11 @@ class TimerAppView: MiniApp, UIPickerViewDelegate, UIPickerViewDataSource{
             maker.top.equalTo(timePickerButton.snp.bottom)
             maker.bottom.leading.trailing.equalToSuperview()
         }
+        timePicker.alpha = 0
         
         self.addSubview(timerControllerButton)
         timerControllerButton.changesSelectionAsPrimaryAction = true
-        var conf2 = UIButton.Configuration.tinted()
-        conf2.title = "Продолжить"
-        conf2.image = UIImage(systemName: "arrowtriangle.right.fill")
-        timerControllerButton.configuration = conf2
+        timerControllerButton.configuration = UIButton.Configuration.tinted()
         timerControllerButton.configurationUpdateHandler = { button in
             var conf = button.configuration!
             if button.state == .normal{
@@ -88,27 +95,59 @@ class TimerAppView: MiniApp, UIPickerViewDelegate, UIPickerViewDataSource{
             }
             button.configuration = conf
         }
+        timerControllerButton.isSelected = true
         timerControllerButton.snp.makeConstraints { maker in
             maker.centerX.equalToSuperview()
             maker.bottom.equalToSuperview().inset(15)
         }
-        timerControllerButton.addAction(UIAction(handler: { [unowned self] _ in
-
+        timerControllerButton.addAction(UIAction(handler: {  _ in
+            if self.timerControllerButton.isSelected == false { self.startTimer() }
+            else { self.stopTimer() }
         }), for: .touchUpInside)
         
         
         self.setHalfSize() //fasdfa
     }
     
+    //MARK: - Seconds Timer
+    private func startTimer(){
+        guard currentSeconds > 0 else { return }
+        secondsTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [unowned self] time in
+            currentSeconds -= 1
+            timer.progress = CGFloat(currentSeconds) / CGFloat(startSeconds)
+            updateTime()
+            if currentSeconds <= 0 {
+                time.invalidate()
+                timerControllerButton.isSelected = true
+            }
+        })
+    }
+    
+    private func stopTimer(){
+        secondsTimer.invalidate()
+    }
+    
+    private func updateTime(){
+        var conf = timePickerButton.configuration
+        conf?.title = "\(currentTime.hours):\(currentTime.minutes):\(currentTime.seconds)"
+        timePickerButton.configuration = conf
+        
+        timePicker.selectRow(currentTime.hours, inComponent: 0, animated: true)
+        timePicker.selectRow(currentTime.minutes, inComponent: 1, animated: true)
+        timePicker.selectRow(currentTime.seconds, inComponent: 2, animated: true)
+    }
+    
     //MARK: - Time Picker
     func showPicker(){
         UIView.animate(withDuration: 0.3, animations: {
             self.timePicker.alpha = 1
+            self.timerControllerButton.alpha = 0
         })
     }
     func hidePicker(){
         UIView.animate(withDuration: 0.3, animations: {
             self.timePicker.alpha = 0
+            self.timerControllerButton.alpha = 1
         })
     }
     
@@ -127,10 +166,16 @@ class TimerAppView: MiniApp, UIPickerViewDelegate, UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return row.description
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         var conf = timePickerButton.configuration
         conf?.title = "\(pickerView.selectedRow(inComponent: 0)):\(pickerView.selectedRow(inComponent: 1)):\(pickerView.selectedRow(inComponent: 2))"
         timePickerButton.configuration = conf
+        currentSeconds = pickerView.selectedRow(inComponent: 0) * 3600
+        currentSeconds += pickerView.selectedRow(inComponent: 1) * 60
+        currentSeconds += pickerView.selectedRow(inComponent: 2)
+        startSeconds = currentSeconds
+        timer.progress = 1.0
     }
     
     //MARK: - Drawing
@@ -163,11 +208,13 @@ class TimerAppView: MiniApp, UIPickerViewDelegate, UIPickerViewDataSource{
         timer.alpha = 0
         timePicker.alpha = 0
         timePickerButton.alpha = 0
+        timerControllerButton.alpha = 0
+        timePickerButton.isSelected = false
     }
     
     override func showElements(animated: Bool = true) {
         timer.alpha = 1
-        timePicker.alpha = 1
         timePickerButton.alpha = 1
+        timerControllerButton.alpha = 1
     }
 }
