@@ -13,7 +13,13 @@ var AppData = ApplicationData()
 struct ApplicationData{
 
     var miniAppsDataSource: UICollectionViewDiffableDataSource<Section, UUID>?
-    var apps: [any MiniAppProtocol] = [TimerAppView(), TemperatureView(), LocationView(), TicTacView(), NewTicTackView(), SepiaFilterView(), DisterFilterView(), HatchedFilterView(), BlurFilterView(), PixelFilterView()]
+    var tableAppsDataSource: UITableViewDiffableDataSource<Section, UUID>?
+    var apps: [any MiniAppProtocol] = [TemperatureView(), LocationView(), TicTacView(), NewTicTackView(), SepiaFilterView(), DisterFilterView(), HatchedFilterView(), BlurFilterView(), PixelFilterView(), TimerAppView(), SecondTimerAppView()]
+    
+    //чтобы перерисовывать всьюшки при изменении экрана
+    func setNeedsDisplayForSubviews(){
+        AppData.apps.forEach { $0.subviews.forEach {$0.setNeedsDisplay()} }
+    }
 }
 
 enum Section{

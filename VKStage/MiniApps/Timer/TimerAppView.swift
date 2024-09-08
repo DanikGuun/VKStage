@@ -14,6 +14,11 @@ class TimerAppView: MiniApp, UIPickerViewDelegate, UIPickerViewDataSource{
     
     var startGradientColor: UIColor = .timerGradientStart { didSet { self.setNeedsDisplay() } }
     var endGradientColor: UIColor = .timerGradientEnd { didSet { self.setNeedsDisplay() } }
+    var timePickerBackgroundColor: UIColor = .timePickerBackground
+    var timePickerBackgroundHiglitedColor: UIColor = .timePickerBackgroundHighlited
+    var timerTextColor: UIColor = .timerText
+    var timerTextHighlitedColor: UIColor = .timerTextHighlited
+    
     var timer: TimerView = TimerView()
     var timePickerButton: UIButton = UIButton()
     var timerControllerButton = UIButton()
@@ -49,12 +54,12 @@ class TimerAppView: MiniApp, UIPickerViewDelegate, UIPickerViewDataSource{
         timePickerButton.configurationUpdateHandler = { button in
             var conf = button.configuration!
             if button.state == .normal{
-                conf.background.backgroundColor = .timePickerBackground
-                conf.baseForegroundColor = .timerText
+                conf.background.backgroundColor = self.timePickerBackgroundColor
+                conf.baseForegroundColor = self.timerTextColor
             }
             else if button.state == .selected{
-                conf.background.backgroundColor = .timePickerBackgroundHighlited
-                conf.baseForegroundColor = .timerTextHighlited
+                conf.background.backgroundColor = self.timePickerBackgroundHiglitedColor
+                conf.baseForegroundColor = self.timerTextHighlitedColor
             }
             button.configuration = conf
         }
@@ -62,9 +67,9 @@ class TimerAppView: MiniApp, UIPickerViewDelegate, UIPickerViewDataSource{
             if timePickerButton.isSelected { showPicker() }
             else { hidePicker() }
         }), for: .touchUpInside)
-        
         timePickerButton.snp.makeConstraints { maker in
             maker.center.equalTo(timer.snp.center)
+            maker.size.equalTo(CGSize(width: 100, height: 30))
         }
         
         self.addSubview(timePicker)
@@ -82,14 +87,14 @@ class TimerAppView: MiniApp, UIPickerViewDelegate, UIPickerViewDataSource{
         timerControllerButton.configurationUpdateHandler = { button in
             var conf = button.configuration!
             if button.state == .normal{
-                conf.background.backgroundColor = .timePickerBackground
-                conf.baseForegroundColor = .timerText
+                conf.background.backgroundColor = self.timePickerBackgroundColor
+                conf.baseForegroundColor = self.timerTextColor
                 conf.title = "Стоп"
                 conf.image = UIImage(systemName: "pause.fill")
             }
             else if button.state == .selected{
-                conf.background.backgroundColor = .timePickerBackgroundHighlited
-                conf.baseForegroundColor = .timerTextHighlited
+                conf.background.backgroundColor = self.timePickerBackgroundHiglitedColor
+                conf.baseForegroundColor = self.timerTextHighlitedColor
                 conf.title = "Продолжить"
                 conf.image = UIImage(systemName: "arrowtriangle.right.fill")
             }
@@ -104,9 +109,6 @@ class TimerAppView: MiniApp, UIPickerViewDelegate, UIPickerViewDataSource{
             if self.timerControllerButton.isSelected == false { self.startTimer() }
             else { self.stopTimer() }
         }), for: .touchUpInside)
-        
-        
-        self.setHalfSize() //fasdfa
     }
     
     //MARK: - Seconds Timer
@@ -144,6 +146,7 @@ class TimerAppView: MiniApp, UIPickerViewDelegate, UIPickerViewDataSource{
             self.timerControllerButton.alpha = 0
         })
     }
+    
     func hidePicker(){
         UIView.animate(withDuration: 0.3, animations: {
             self.timePicker.alpha = 0
@@ -217,4 +220,7 @@ class TimerAppView: MiniApp, UIPickerViewDelegate, UIPickerViewDataSource{
         timePickerButton.alpha = 1
         timerControllerButton.alpha = 1
     }
+    
+
+    
 }

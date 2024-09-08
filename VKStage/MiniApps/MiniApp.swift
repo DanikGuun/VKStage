@@ -12,6 +12,7 @@ import CoreGraphics
 //Шаблонный класс, тут только айди и поведение значка
 class MiniApp: UIControl, MiniAppProtocol{
     var id = UUID()
+    var name = ""
     var iconView = UIImageView()
     var currentState: MiniAppCurrentSize = .minimum
     var delegate: (any MiniAppDelegate)?
@@ -90,10 +91,10 @@ class MiniApp: UIControl, MiniAppProtocol{
             self.setNeedsLayout()
             self.showElements()
             self.iconView.snp.remakeConstraints { maker in
-                maker.center.equalToSuperview()
+                maker.bottom.leading.equalToSuperview().inset(10)
             }
             self.layoutIfNeeded()
-        }, completion: {_ in self.showElementCompelition()})
+        }, completion: {_ in self.showElementCompelition() })
     }
     
     //MARK: - Показываем или прячем элементы при сворачиввании
