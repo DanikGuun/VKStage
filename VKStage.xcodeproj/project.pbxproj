@@ -19,7 +19,8 @@
 		567DB2D82C884EF4002D6020 /* SmallScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2D72C884EF4002D6020 /* SmallScreenViewController.swift */; };
 		567DB2DC2C88508A002D6020 /* ApplicationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2DB2C88508A002D6020 /* ApplicationData.swift */; };
 		567DB2DE2C885C87002D6020 /* MiniAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DB2DD2C885C87002D6020 /* MiniAppCell.swift */; };
-		56AB7C012C8DE48400F83CC7 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AB7C002C8DE48400F83CC7 /* TimerView.swift */; };
+		56AB7C012C8DE48400F83CC7 /* TimerAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AB7C002C8DE48400F83CC7 /* TimerAppView.swift */; };
+		56AB7C032C8DEBB400F83CC7 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AB7C022C8DEBB400F83CC7 /* TimerView.swift */; };
 		56B855582C8BA0E000B612C7 /* TicTacElementDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B855572C8BA0E000B612C7 /* TicTacElementDelegate.swift */; };
 		56B8555A2C8BAD8C00B612C7 /* TicTacFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B855592C8BAD8C00B612C7 /* TicTacFieldDelegate.swift */; };
 		56B8555D2C8C3EA800B612C7 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B8555C2C8C3EA800B612C7 /* FilterView.swift */; };
@@ -68,7 +69,8 @@
 		567DB2D72C884EF4002D6020 /* SmallScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallScreenViewController.swift; sourceTree = "<group>"; };
 		567DB2DB2C88508A002D6020 /* ApplicationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationData.swift; sourceTree = "<group>"; };
 		567DB2DD2C885C87002D6020 /* MiniAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppCell.swift; sourceTree = "<group>"; };
-		56AB7C002C8DE48400F83CC7 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		56AB7C002C8DE48400F83CC7 /* TimerAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerAppView.swift; sourceTree = "<group>"; };
+		56AB7C022C8DEBB400F83CC7 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		56B855572C8BA0E000B612C7 /* TicTacElementDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacElementDelegate.swift; sourceTree = "<group>"; };
 		56B855592C8BAD8C00B612C7 /* TicTacFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacFieldDelegate.swift; sourceTree = "<group>"; };
 		56B8555C2C8C3EA800B612C7 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
@@ -182,7 +184,8 @@
 		56AB7BFF2C8DE46500F83CC7 /* Timer */ = {
 			isa = PBXGroup;
 			children = (
-				56AB7C002C8DE48400F83CC7 /* TimerView.swift */,
+				56AB7C002C8DE48400F83CC7 /* TimerAppView.swift */,
+				56AB7C022C8DEBB400F83CC7 /* TimerView.swift */,
 			);
 			path = Timer;
 			sourceTree = "<group>";
@@ -297,7 +300,7 @@
 				56B8555D2C8C3EA800B612C7 /* FilterView.swift in Sources */,
 				56BDB4332C8D04E300A50850 /* BlurFilterView.swift in Sources */,
 				56BDB42B2C8CE6E900A50850 /* MiniAppDelegate.swift in Sources */,
-				56AB7C012C8DE48400F83CC7 /* TimerView.swift in Sources */,
+				56AB7C012C8DE48400F83CC7 /* TimerAppView.swift in Sources */,
 				56B926F12C88FAE000125007 /* LocationView.swift in Sources */,
 				56BDB4372C8D093600A50850 /* NoirFilterView.swift in Sources */,
 				56B926F92C898DA500125007 /* LocationModel.swift in Sources */,
@@ -311,6 +314,7 @@
 				56B855582C8BA0E000B612C7 /* TicTacElementDelegate.swift in Sources */,
 				56B926F32C89784400125007 /* TemperatureModel.swift in Sources */,
 				56BDB4352C8D066B00A50850 /* PixelFilterView.swift in Sources */,
+				56AB7C032C8DEBB400F83CC7 /* TimerView.swift in Sources */,
 				567DB2B82C88257B002D6020 /* AppDelegate.swift in Sources */,
 				567DB2BA2C88257B002D6020 /* SceneDelegate.swift in Sources */,
 				56BDB4292C8CC3D300A50850 /* SepiaFilterView.swift in Sources */,

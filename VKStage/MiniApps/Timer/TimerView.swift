@@ -1,5 +1,5 @@
 //
-//  TimerView.swift
+//  Timer.swift
 //  VKStage
 //
 //  Created by Данила Бондарь on 08.09.2024.
@@ -7,28 +7,61 @@
 
 import Foundation
 import UIKit
-import CoreGraphics
 
-class TimerView: MiniApp{
+class TimerView: UIView{
+    var timerColor: UIColor = .timer { didSet { self.setNeedsDisplay() } }
+    var timerBackColor: UIColor = .timerBack { didSet { self.setNeedsDisplay() } }
+    var lineWidth: CGFloat = 7 { didSet { self.setNeedsDisplay() } }
+    var progress: CGFloat = 1 { willSet { animateTimer(to: newValue) } }
+    private var timerLayer = CAShapeLayer()
+    private var timerBackLayer = CAShapeLayer() //чтобы одинаково анимировались
     
-    var startGradientColor: UIColor = .timerGradientStart
-    var endGradientColor: UIColor = .timerGradientEnd
+    convenience init(){
+        self.init(frame: .zero)
+        setup()
+    }
     
-    override func setup() {
-        super.setup()
-        iconView.image = UIImage(systemName: "timer")
+    func setup(){
+        self.layer.addSublayer(timerLayer)
+        self.layer.addSublayer(timerBackLayer)
+    }
+    //MARK: - Drawing
+    private func animateTimer(to value: CGFloat){
+        let anim = CABasicAnimation()
+        anim.keyPath = "strokeEnd"
+        anim.fromValue = progress
+        anim.toValue = value
+        anim.duration = 5
+        anim.isRemovedOnCompletion = false
+        anim.fillMode = .forwards
+        timerLayer.add(anim, forKey: "strokeEnd")
     }
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
-        guard let context = UIGraphicsGetCurrentContext() else { return }
+        //рисовать по меньше стороне, AspectRatio
+        let minEdge = min(self.bounds.width, self.bounds.height)
         
-        let colorSpace = CGColorSpace(name: CGColorSpace.sRGB)
-        let colors = [startGradientColor.cgColor, endGradientColor.cgColor]
-        guard let gradient = CGGradient(colorsSpace: colorSpace, colors: colors as CFArray, locations: [0.0, 1.0]) else { return }
+        //TimerTransparrentBack
+        let timerBackPath = UIBezierPath()
+        timerBackPath.lineWidth = lineWidth
+        timerBackPath.addArc(withCenter: CGPoint(x: rect.midX, y: rect.midY), radius: minEdge/2 - lineWidth/2, startAngle: 0, endAngle: .pi * 2, clockwise: true)
+        timerBackLayer.path = timerBackPath.cgPath
+        timerBackLayer.strokeColor = timerBackColor.cgColor
+        timerBackLayer.fillColor = UIColor.clear.cgColor
+        timerBackLayer.lineWidth = lineWidth
+        //
         
-        context.drawLinearGradient(gradient, start: .zero, end: CGPoint(x: 0, y: rect.height), options: [])
-        
+        //Timer
+        let timerPath = UIBezierPath()
+        timerPath.lineWidth = lineWidth
+        timerPath.addArc(withCenter: CGPoint(x: rect.midX, y: rect.midY), radius: minEdge/2 - lineWidth/2, startAngle: -.pi / 2, endAngle: -.pi * 5/2 , clockwise: false)
+        timerLayer.path = timerPath.cgPath
+        timerLayer.strokeColor = timerColor.cgColor
+        timerLayer.fillColor = UIColor.clear.cgColor
+        timerLayer.strokeEnd = progress
+        timerLayer.lineWidth = lineWidth
+        //
     }
 }
