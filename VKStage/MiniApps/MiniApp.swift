@@ -23,6 +23,12 @@ class MiniApp: UIControl, MiniAppProtocol{
         setup()
     }
     
+    override func layoutSubviews() { //чтобы корректно отрисовывались элементы, которые не попадают на экран
+        super.layoutSubviews()
+        self.setNeedsDisplay()
+    }
+
+    
     func setup(){
         self.addSubview(iconView)
         iconView.snp.makeConstraints { maker in

@@ -74,6 +74,8 @@ class FilterView: MiniApp, PHPickerViewControllerDelegate{
             maker.trailing.bottom.equalToSuperview().inset(20)
         }
         getPhotoButton.addAction(UIAction(handler: {_ in self.getPhotoFromLibrary() }), for: .touchUpInside)
+        
+        self.setNeedsDisplay()
     }
     
     //MARK: - Filtering

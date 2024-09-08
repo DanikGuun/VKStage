@@ -12,11 +12,15 @@ import CoreGraphics
 final class TicTacFieldView: UIView, TicTacElementDelegate{
     
     var fieldColor: UIColor = .systemBackground { didSet{ self.setNeedsDisplay() } }
+    var ticColor: UIColor = .newTic { didSet{ self.setNeedsDisplay() } }
+    var tacColor: UIColor = .newTac { didSet{ self.setNeedsDisplay() } }
+    
     var lineWidth: CGFloat = 7 { didSet{ self.setNeedsDisplay() } }
     var delegate: TicTacFieldDelegate?
     
+    internal var ticTacElements: [TicTacElementView] = [] //клеточки
+    
     private var currentStep: TicTacCellType = .tic
-    private var ticTacElements: [TicTacElementView] = [] //клеточки
     private var ticPositions = Set<Int>() //чтобы держать позиции и смотреть по ним выигрыш
     private var tacPositions = Set<Int>()
     

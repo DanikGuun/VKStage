@@ -14,6 +14,12 @@ class TicTacView: MiniApp, TicTacFieldDelegate {
     var currentStepLabel = UILabel()
     var currentStepIcon = TicTacElementView()
     
+    var startGradient: UIColor = UIColor(red: 59/255, green: 59/255, blue: 59/255, alpha: 1) { didSet{ self.setNeedsDisplay() } }
+    var endGradient: UIColor = UIColor(red: 57/255, green: 57/255, blue: 57/255, alpha: 1) { didSet{ self.setNeedsDisplay() } }
+    var accentColor: UIColor = .newTicTacAccent 
+    var ticColor: UIColor = .newTic
+    var tacColor: UIColor = .newTac
+    
     override func setup() {
         self.addSubview(ticTacField)
         super.setup()
@@ -86,7 +92,7 @@ class TicTacView: MiniApp, TicTacFieldDelegate {
         guard let context = UIGraphicsGetCurrentContext() else { return }
         
         let colorSpace = CGColorSpace(name: CGColorSpace.sRGB)
-        let colors = [CGColor(red: 59/255, green: 59/255, blue: 59/255, alpha: 1), CGColor(red: 57/255, green: 57/255, blue: 57/255, alpha: 1)]
+        let colors = [startGradient.cgColor, endGradient.cgColor]
         
         guard let gradient = CGGradient(colorsSpace: colorSpace, colors: colors as CFArray, locations: [0.0, 1.0]) else { return }
         context.drawLinearGradient(gradient, start: .zero, end: CGPoint(x: 0, y: rect.height), options: [])

@@ -35,6 +35,7 @@
 		56BDB4332C8D04E300A50850 /* BlurFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BDB4322C8D04E300A50850 /* BlurFilterView.swift */; };
 		56BDB4352C8D066B00A50850 /* PixelFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BDB4342C8D066B00A50850 /* PixelFilterView.swift */; };
 		56BDB4372C8D093600A50850 /* NoirFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BDB4362C8D093600A50850 /* NoirFilterView.swift */; };
+		56BDB43B2C8D0BD700A50850 /* NewTicTackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BDB43A2C8D0BD700A50850 /* NewTicTackView.swift */; };
 		56CBECB92C8B14150050A2CC /* TicTacElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CBECB82C8B14150050A2CC /* TicTacElementView.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,7 @@
 		56BDB4322C8D04E300A50850 /* BlurFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurFilterView.swift; sourceTree = "<group>"; };
 		56BDB4342C8D066B00A50850 /* PixelFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelFilterView.swift; sourceTree = "<group>"; };
 		56BDB4362C8D093600A50850 /* NoirFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoirFilterView.swift; sourceTree = "<group>"; };
+		56BDB43A2C8D0BD700A50850 /* NewTicTackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTicTackView.swift; sourceTree = "<group>"; };
 		56CBECB82C8B14150050A2CC /* TicTacElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacElementView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +101,7 @@
 		56524A892C8A31C200DA1B98 /* TicTacToes */ = {
 			isa = PBXGroup;
 			children = (
+				56BDB43A2C8D0BD700A50850 /* NewTicTackView.swift */,
 				56524A8A2C8A31E500DA1B98 /* TicTacView.swift */,
 				56524A8C2C8A386C00DA1B98 /* TicTacFieldView.swift */,
 				56B855592C8BAD8C00B612C7 /* TicTacFieldDelegate.swift */,
@@ -277,6 +280,7 @@
 				56BDB42D2C8CF88600A50850 /* DisterFilterView.swift in Sources */,
 				56B926F72C897D7700125007 /* MiniApp.swift in Sources */,
 				567DB2D32C884A5B002D6020 /* TemperatureView.swift in Sources */,
+				56BDB43B2C8D0BD700A50850 /* NewTicTackView.swift in Sources */,
 				56B926F52C897C6500125007 /* InfoMiniAppView.swift in Sources */,
 				56524A8B2C8A31E500DA1B98 /* TicTacView.swift in Sources */,
 				56B8555D2C8C3EA800B612C7 /* FilterView.swift in Sources */,

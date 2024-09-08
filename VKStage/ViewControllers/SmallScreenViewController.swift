@@ -66,6 +66,8 @@ class SmallScreenViewController: UIViewController, UICollectionViewDelegate, UIC
         var snapshot = NSDiffableDataSourceSnapshot<Section, UUID>()
         snapshot.appendSections([.main])
         snapshot.appendItems(AppData.apps.map {$0.id})
+        AppData.apps.forEach { $0.setNeedsDisplay() }
+        AppData.apps.last?.backgroundColor = .red
         AppData.miniAppsDataSource?.apply(snapshot)
     }
     
@@ -84,6 +86,7 @@ class SmallScreenViewController: UIViewController, UICollectionViewDelegate, UIC
         case .half: app.setHalfSize(animated: true)
         case .full: app.setFullSize(animated: true)
         }
+        
     }
     
     private func resetCollectionLayout(){

@@ -25,4 +25,7 @@ class PixelFilterView: FilterView{
         guard let outputImage = filter.outputImage else { return }
         imageView.image = UIImage(ciImage: outputImage)
     }
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+    }
 }
