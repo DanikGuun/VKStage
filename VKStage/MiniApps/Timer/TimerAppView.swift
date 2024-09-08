@@ -16,6 +16,7 @@ class TimerAppView: MiniApp, UIPickerViewDelegate, UIPickerViewDataSource{
     var endGradientColor: UIColor = .timerGradientEnd
     var timer: TimerView = TimerView()
     var timePickerButton: UIButton = UIButton()
+    var timerControllerButton = UIButton()
     
     private var timePicker = UIPickerView()
     
@@ -26,16 +27,18 @@ class TimerAppView: MiniApp, UIPickerViewDelegate, UIPickerViewDataSource{
         
         self.addSubview(timer)
         timer.snp.makeConstraints { maker in
-            maker.center.equalToSuperview()
+            maker.centerX.equalToSuperview()
+            maker.centerY.equalToSuperview().offset(-30)
             maker.size.equalToSuperview().multipliedBy(0.8)
         }
         
         self.addSubview(timePickerButton)
         timePickerButton.changesSelectionAsPrimaryAction = true
-        timePickerButton.configuration = UIButton.Configuration.tinted()
+        var conf = UIButton.Configuration.tinted()
+        conf.title = "00:00:00"
+        timePickerButton.configuration = conf
         timePickerButton.configurationUpdateHandler = { button in
             var conf = button.configuration!
-            conf.title = "asdlfjsa"
             if button.state == .normal{
                 conf.background.backgroundColor = .timePickerBackground
                 conf.baseForegroundColor = .timerText
@@ -62,6 +65,37 @@ class TimerAppView: MiniApp, UIPickerViewDelegate, UIPickerViewDataSource{
             maker.top.equalTo(timePickerButton.snp.bottom)
             maker.bottom.leading.trailing.equalToSuperview()
         }
+        
+        self.addSubview(timerControllerButton)
+        timerControllerButton.changesSelectionAsPrimaryAction = true
+        var conf2 = UIButton.Configuration.tinted()
+        conf2.title = "Продолжить"
+        conf2.image = UIImage(systemName: "arrowtriangle.right.fill")
+        timerControllerButton.configuration = conf2
+        timerControllerButton.configurationUpdateHandler = { button in
+            var conf = button.configuration!
+            if button.state == .normal{
+                conf.background.backgroundColor = .timePickerBackground
+                conf.baseForegroundColor = .timerText
+                conf.title = "Стоп"
+                conf.image = UIImage(systemName: "pause.fill")
+            }
+            else if button.state == .selected{
+                conf.background.backgroundColor = .timePickerBackgroundHighlited
+                conf.baseForegroundColor = .timerTextHighlited
+                conf.title = "Продолжить"
+                conf.image = UIImage(systemName: "arrowtriangle.right.fill")
+            }
+            button.configuration = conf
+        }
+        timerControllerButton.snp.makeConstraints { maker in
+            maker.centerX.equalToSuperview()
+            maker.bottom.equalToSuperview().inset(15)
+        }
+        timerControllerButton.addAction(UIAction(handler: { [unowned self] _ in
+
+        }), for: .touchUpInside)
+        
         
         self.setHalfSize() //fasdfa
     }
@@ -92,6 +126,11 @@ class TimerAppView: MiniApp, UIPickerViewDelegate, UIPickerViewDataSource{
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return row.description
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        var conf = timePickerButton.configuration
+        conf?.title = "\(pickerView.selectedRow(inComponent: 0)):\(pickerView.selectedRow(inComponent: 1)):\(pickerView.selectedRow(inComponent: 2))"
+        timePickerButton.configuration = conf
     }
     
     //MARK: - Drawing
