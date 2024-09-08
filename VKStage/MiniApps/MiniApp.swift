@@ -28,7 +28,6 @@ class MiniApp: UIControl, MiniAppProtocol{
         self.setNeedsDisplay()
     }
 
-    
     func setup(){
         self.addSubview(iconView)
         iconView.snp.makeConstraints { maker in
