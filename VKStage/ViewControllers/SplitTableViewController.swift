@@ -43,7 +43,6 @@ class SplitTableViewController: UITableViewController{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let id = AppData.tableAppsDataSource?.itemIdentifier(for: indexPath) else { return }
         if let miniAppView = AppData.apps.first(where: { $0.id == id }) as? MiniApp{
-            splitViewController?.hide(.primary)
             let controller = splitViewController!.viewController(for: .secondary)!
             controller.view.subviews.forEach { $0.removeFromSuperview() }
             controller.view.addSubview(miniAppView)

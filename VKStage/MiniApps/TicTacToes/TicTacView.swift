@@ -23,6 +23,7 @@ class TicTacView: MiniApp, TicTacFieldDelegate {
     override func setup() {
         self.addSubview(ticTacField)
         super.setup()
+        name = "Крестики нолики"
         iconView.image = UIImage(named: "TicTacToesIcon")
         
         ticTacField.backgroundColor = .clear

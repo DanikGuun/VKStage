@@ -34,6 +34,7 @@ class FilterView: MiniApp, PHPickerViewControllerDelegate{
     //MARK: - Initialize
     override func setup() {
         super.setup()
+        name = "Фильтр"
         iconView.image = UIImage(systemName: "camera.filters")
         
         self.addSubview(filterNameLabel)

@@ -14,7 +14,9 @@ final class TemperatureView: InfoMiniAppView {
     override func setup() {
         super.setup()
         
+        name = "Температура"
         iconView.image = UIImage(systemName: "thermometer.variable.and.figure")
+        
         infoLabel.text = "Текущая температура"
         updateButtonHandler = {
             Task(priority: .userInitiated){

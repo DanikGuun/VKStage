@@ -13,7 +13,8 @@ class LocationView: InfoMiniAppView{
 
     override func setup() {
         super.setup()
-
+        
+        name = "Местополжение"
         iconView.image = UIImage(systemName: "building.2.fill")
         
         infoLabel.text = "Ваш примерный адрес:"

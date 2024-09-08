@@ -14,6 +14,7 @@ class SepiaFilterView: FilterView{
     private var filter = CIFilter.sepiaTone()
     
     override func setup() {
+        name = "Сепия"
         startGradientColor = .sepiaFilterStartGradient
         endGradienColor = .sepiaFilterEndGradient
         super.setup()

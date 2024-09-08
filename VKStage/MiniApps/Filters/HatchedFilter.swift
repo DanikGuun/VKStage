@@ -15,6 +15,7 @@ class HatchedFilterView: FilterView{
     
     override func setup() {
         super.setup()
+        name = "Сетка"
         filterNameLabel.text = "Сетка"
     }
     override func applyFilter(value: Float) {

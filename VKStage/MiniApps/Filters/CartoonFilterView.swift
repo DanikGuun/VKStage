@@ -9,12 +9,13 @@ import Foundation
 import CoreImage.CIFilterBuiltins
 import UIKit
 
-class NoirFilterView: FilterView{
+class CartoonFilterView: FilterView{
     
     var filter = CIFilter.colorMonochrome()
     
     override func setup() {
         super.setup()
+        name = "Мультик"
         filterNameLabel.text = "Мультик"
     }
     override func applyFilter(value: Float) {

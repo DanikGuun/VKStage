@@ -36,6 +36,7 @@ class TimerAppView: MiniApp, UIPickerViewDelegate, UIPickerViewDataSource{
     
     override func setup() {
         super.setup()
+        name = "Таймер"
         
         iconView.image = UIImage(systemName: "timer")
         

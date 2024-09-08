@@ -39,7 +39,7 @@
 		56BDB4312C8D002600A50850 /* HatchedFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BDB4302C8D002600A50850 /* HatchedFilter.swift */; };
 		56BDB4332C8D04E300A50850 /* BlurFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BDB4322C8D04E300A50850 /* BlurFilterView.swift */; };
 		56BDB4352C8D066B00A50850 /* PixelFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BDB4342C8D066B00A50850 /* PixelFilterView.swift */; };
-		56BDB4372C8D093600A50850 /* NoirFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BDB4362C8D093600A50850 /* NoirFilterView.swift */; };
+		56BDB4372C8D093600A50850 /* CartoonFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BDB4362C8D093600A50850 /* CartoonFilterView.swift */; };
 		56BDB43B2C8D0BD700A50850 /* NewTicTackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BDB43A2C8D0BD700A50850 /* NewTicTackView.swift */; };
 		56CBECB92C8B14150050A2CC /* TicTacElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CBECB82C8B14150050A2CC /* TicTacElementView.swift */; };
 /* End PBXBuildFile section */
@@ -91,7 +91,7 @@
 		56BDB4302C8D002600A50850 /* HatchedFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatchedFilter.swift; sourceTree = "<group>"; };
 		56BDB4322C8D04E300A50850 /* BlurFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurFilterView.swift; sourceTree = "<group>"; };
 		56BDB4342C8D066B00A50850 /* PixelFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelFilterView.swift; sourceTree = "<group>"; };
-		56BDB4362C8D093600A50850 /* NoirFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoirFilterView.swift; sourceTree = "<group>"; };
+		56BDB4362C8D093600A50850 /* CartoonFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartoonFilterView.swift; sourceTree = "<group>"; };
 		56BDB43A2C8D0BD700A50850 /* NewTicTackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTicTackView.swift; sourceTree = "<group>"; };
 		56CBECB82C8B14150050A2CC /* TicTacElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacElementView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -208,7 +208,7 @@
 				56BDB4302C8D002600A50850 /* HatchedFilter.swift */,
 				56BDB4322C8D04E300A50850 /* BlurFilterView.swift */,
 				56BDB4342C8D066B00A50850 /* PixelFilterView.swift */,
-				56BDB4362C8D093600A50850 /* NoirFilterView.swift */,
+				56BDB4362C8D093600A50850 /* CartoonFilterView.swift */,
 			);
 			path = Filters;
 			sourceTree = "<group>";
@@ -313,7 +313,7 @@
 				56BDB42B2C8CE6E900A50850 /* MiniAppDelegate.swift in Sources */,
 				56AB7C012C8DE48400F83CC7 /* TimerAppView.swift in Sources */,
 				56B926F12C88FAE000125007 /* LocationView.swift in Sources */,
-				56BDB4372C8D093600A50850 /* NoirFilterView.swift in Sources */,
+				56BDB4372C8D093600A50850 /* CartoonFilterView.swift in Sources */,
 				56B926F92C898DA500125007 /* LocationModel.swift in Sources */,
 				567DB2CE2C884847002D6020 /* MiniAppProtocol.swift in Sources */,
 				56B8555A2C8BAD8C00B612C7 /* TicTacFieldDelegate.swift in Sources */,

@@ -11,6 +11,7 @@ import UIKit
 class NewTicTackView: TicTacView{
     override func setup() {
         super.setup()
+        name = "Крестики нолики 2"
         startGradient = .newTicTacGradientStart
         endGradient = .newTicTacGradientEnd
         ticTacField.fieldColor = .newTicTacAccent

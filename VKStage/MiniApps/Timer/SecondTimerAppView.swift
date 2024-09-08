@@ -9,6 +9,7 @@ import Foundation
 
 class SecondTimerAppView: TimerAppView{
     override func setup() {
+        name = "Таймер 2"
         self.startGradientColor = .secondTimer
         self.endGradientColor = .secondTimer
         self.timerTextColor = .secondTimerText

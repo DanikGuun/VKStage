@@ -15,6 +15,7 @@ class BlurFilterView: FilterView{
     
     override func setup() {
         super.setup()
+        name = "Размытие"
         filterNameLabel.text = "Размытие"
     }
     override func applyFilter(value: Float) {

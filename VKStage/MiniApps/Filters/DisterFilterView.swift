@@ -15,6 +15,7 @@ class DisterFilterView: FilterView{
     
     override func setup() {
         super.setup()
+        name = "Шум"
         filterNameLabel.text = "Шум"
     }
     

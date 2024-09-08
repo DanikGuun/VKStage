@@ -15,6 +15,7 @@ class PixelFilterView: FilterView{
     
     override func setup() {
         super.setup()
+        name = "Пиксели"
         filterNameLabel.text = "Пиксели"
     }
     override func applyFilter(value: Float) {
